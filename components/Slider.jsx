@@ -26,11 +26,7 @@ function SliderCard({ blog }) {
   // const { id, title, tag, uploadedDate, image, link } = props;
 
   return (
-    <Link
-      href={blog.link}
-      key=""
-      className="relative rounded-md border hover:dark:border-neutral-700"
-    >
+    <Link href={blog.link} key="" className="relative rounded-md">
       <img
         src={blog.image}
         className="aspect-video h-[300px] w-full rounded-md border object-cover md:h-[450px] lg:h-[600px]"
