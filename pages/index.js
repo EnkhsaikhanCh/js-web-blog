@@ -3,6 +3,7 @@ import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
 import { useEffect, useState } from "react";
 import { Card } from "@/components/Card";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Slider />
       <Trending />
       <Card />
+      <Footer />
     </div>
   );
 }
