@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export function Slider() {
   return (
-    <div className="container mx-auto mt-[20px] flex flex-col gap-3 px-4 py-4">
+    <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
       {/* <SliderCard /> */}
 
       <SliderCard blog={BlogData[0]} />

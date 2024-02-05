@@ -5,10 +5,10 @@ import Link from "next/link";
 
 export function Header() {
   return (
-    <div className="px-4 py-4 md:px-0 md:container mx-auto">
+    <div className="mx-auto px-4 py-4 md:container md:px-0">
       <div className="flex items-center justify-between">
         <Link href="http://localhost:3000/">
-        <Logo />
+          <Logo />
         </Link>
         <Menu items={MenuData} />
       </div>

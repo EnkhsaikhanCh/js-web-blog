@@ -19,9 +19,7 @@ export function Card() {
   }, []);
 
   function loadNext() {
-    fetch(
-      `${apiUrl}${itemsPerPage}&page=${currentPage + 1}`,
-    )
+    fetch(`${apiUrl}${itemsPerPage}&page=${currentPage + 1}`)
       .then((response) => response.json())
       .then((data) => {
         setArticles([...articles, ...data]);
@@ -36,7 +34,7 @@ export function Card() {
       <div className="flex flex-col gap-5 px-4 text-[#495057]">
         <h1 className="text-3xl font-bold">All Blog Post</h1>
         <div className="flex items-center justify-between font-semibold">
-          <div className="flex items-center gap-5 font-semibold">
+          <div className="flex flex-wrap items-center gap-3 font-semibold md:gap-5">
             <button>All</button>
             <button>Design</button>
             <button>Travel</button>
@@ -44,6 +42,7 @@ export function Card() {
             <button>Technology</button>
             <button>Branding</button>
           </div>
+
           <button className="rounded-md border px-4 py-1 hover:border-slate-300 hover:bg-gray-50">
             <a href="/blog">View all</a>
           </button>
@@ -54,7 +53,7 @@ export function Card() {
           <CardDesign key={article.id} article={article} />
         ))}
       </div>
-      <div className="mb-10 flex items-center justify-center">
+      <div className="mb-[70px] flex items-center justify-center">
         <button
           className="rounded-md border bg-slate-50 px-4 py-2 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
           onClick={loadNext}

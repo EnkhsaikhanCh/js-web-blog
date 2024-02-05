@@ -1,13 +1,13 @@
 export function ErrorPage() {
   return (
-    <div className="container mx-auto flex h-[500px] items-center justify-center">
-      <div className="grid grid-cols-2">
+    <div className="container mx-auto flex h-screen items-center justify-center">
+      <div className="flex flex-col gap-5 px-4 md:grid md:grid-cols-2">
         <div className="flex items-center justify-center">
           <h1 className="text-8xl">404</h1>
         </div>
-        <div className="flex flex-col items-start justify-center gap-5">
+        <div className="flex flex-col items-center justify-center gap-5 md:items-start">
           <h2 className="text-2xl font-bold">Page Not Found</h2>
-          <p>
+          <p className="text-justify">
             We're sorry, This page is unknown or does not exist the page you are
             looking for.
           </p>
