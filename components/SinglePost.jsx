@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { Loading } from "./Loading";
+import { Footer } from "./Footer";
 
 export function SinglePost({ tags }) {
   const [article, setArticle] = useState();
@@ -51,6 +52,7 @@ export function SinglePost({ tags }) {
           <div className="prose mx-auto">{parse(article.body_html)}</div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }

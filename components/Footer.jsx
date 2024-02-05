@@ -6,7 +6,7 @@ import { X_icon } from "./images/icons/X_icon";
 
 export function Footer() {
   return (
-    <div className="bg-[#F6F6F7]">
+    <div className="bg-white">
       <div className="container mx-auto flex flex-col gap-[50px] py-10">
         <div className="grid grid-cols-3">
           <div className="flex flex-col gap-5">
