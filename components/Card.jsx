@@ -1,10 +1,12 @@
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
+import { ViewAllButton } from "./ViewAllButton";
+import { CardUI } from "./CardUI";
 
-export function Card() {
+export function Card({ hasProfile }) {
   const [articles, setArticles] = useState();
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const username = "simonholdorf";
   const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=`;
@@ -27,30 +29,68 @@ export function Card() {
       });
   }
 
+  const handleTagSelect = (tag) => {
+    setSelectedTag(tag);
+    setCurrentPage(1);
+  };
+
+  function filterBySelectedTag(article) {
+    return article.tag_list.includes(selectedTag);
+  }
+
+  const filteredArticles = selectedTag
+    ? articles.filter(filterBySelectedTag)
+    : articles;
+
   if (articles === undefined) return <Loading />;
 
   return (
     <div className="container mx-auto">
-      <div className="flex flex-col gap-5 px-4 text-[#495057]">
-        <h1 className="text-3xl font-bold">All Blog Post</h1>
-        <div className="flex items-center justify-between font-semibold">
-          <div className="flex flex-wrap items-center gap-3 font-semibold md:gap-5">
-            <button>All</button>
-            <button>Design</button>
-            <button>Travel</button>
-            <button>Fashion</button>
-            <button>Technology</button>
-            <button>Branding</button>
-          </div>
-
-          <button className="rounded-md border px-4 py-1 hover:border-slate-300 hover:bg-gray-50">
-            <a href="/blog">View all</a>
+      <h1 className="px-4 text-3xl font-bold text-[#495057]">All Blog Post</h1>
+      <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
+        <div className="flex flex-wrap items-center gap-1 font-semibold">
+          <button
+            className="rounded-md border border-white  px-4 py-1 hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect(null)}
+          >
+            All
+          </button>
+          <button
+            className="rounded-md border border-white px-4 py-1 hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect("devops")}
+          >
+            DevOps
+          </button>
+          <button
+            className="rounded-md border border-white px-4 py-1  hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect("cloud")}
+          >
+            Cloud
+          </button>
+          <button
+            className="rounded-md border border-white px-4 py-1  hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect("beginners")}
+          >
+            Beginners
+          </button>
+          <button
+            className="rounded-md border border-white px-4 py-1  hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect("programming")}
+          >
+            Programming
+          </button>
+          <button
+            className="rounded-md border border-white px-4 py-1  hover:border-slate-300 hover:bg-gray-50"
+            onClick={() => handleTagSelect("javascript")}
+          >
+            Javascript
           </button>
         </div>
+        <ViewAllButton />
       </div>
       <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
-        {articles.map((article) => (
-          <CardDesign key={article.id} article={article} />
+        {filteredArticles.map((article) => (
+          <CardUI key={article.id} article={article} hasProfile={hasProfile} />
         ))}
       </div>
       <div className="mb-[70px] flex items-center justify-center">
@@ -62,33 +102,5 @@ export function Card() {
         </button>
       </div>
     </div>
-  );
-}
-
-function CardDesign({ article }) {
-  return (
-    <Link
-      href={article.path}
-      className="flex flex-col gap-4 rounded-md border p-4 hover:bg-slate-50 hover:dark:border-neutral-300 "
-    >
-      <img
-        src={article.cover_image}
-        className="aspect-video rounded-md object-cover"
-      />
-      <div className="col-span-2 p-2">
-        <div className="mb-2 flex flex-wrap gap-2">
-          {article.tag_list.map((tag) => (
-            <span
-              key={tag}
-              className="inline-block rounded bg-blue-200 px-[10px] py-1 text-sm text-blue-700"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-        <h2 className="mb-5 font-bold">{article.title}</h2>
-        <p className="text-[#97989F]">{article.readable_publish_date}</p>
-      </div>
-    </Link>
   );
 }
