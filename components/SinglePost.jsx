@@ -29,7 +29,7 @@ export function SinglePost({ tags }) {
     <>
       <Header />
       <div className="bg-white px-2 py-[30px]">
-        <div className="container mx-auto flex w-full flex-col gap-[15px] rounded-md bg-[#f5f5f5] pb-4 lg:w-[800px]">
+        <div className="container mx-auto flex w-full flex-col gap-[15px] rounded-md  pb-4 lg:w-[800px]">
           <img
             src={article.cover_image}
             alt=""

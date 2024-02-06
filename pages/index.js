@@ -9,8 +9,8 @@ export default function Home() {
     <div>
       <Header />
       <Slider />
-      <Trending />
-      <Card />
+      {/* <Trending /> */}
+      <Card hasProfile={false} />
       <Footer />
     </div>
   );

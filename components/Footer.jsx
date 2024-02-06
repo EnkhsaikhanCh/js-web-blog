@@ -9,19 +9,19 @@ export function Footer() {
   return (
     <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
-        <div className="mx-4 flex flex-col gap-[50px] divide-y rounded-xl border bg-[#f5f5f5] px-8 pb-[20px] pt-[30px]">
+        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#fef3ea] px-8 pb-[20px] pt-[30px]">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">
-                <h2 className="text-lg font-semibold">About</h2>
-                <p className="text-justify text-[#696A75]">
+                <h2 className="text-lg font-bold text-[#213343]">About</h2>
+                <p className="text-justify text-[#213343]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                   illo quae qui et. Dolorum nisi inventore aspernatur hic! Sequi
                   reprehenderit aliquam ea provident fugiat ducimus voluptate
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="flex w-full flex-col rounded-md border md:w-[300px]">
+              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px]">
                 <button className="flex justify-between gap-1 p-2">
                   <div className="pl-2 text-[#696A75]">Email</div>
                   <div>email@gmail.com</div>
@@ -36,7 +36,7 @@ export function Footer() {
             </div>
 
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2">
+              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343]">
                 <a
                   href="http://localhost:3000/"
                   className="hover:underline hover:underline-offset-2"
@@ -61,7 +61,7 @@ export function Footer() {
               </ul>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2">
+              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343]">
                 <a
                   href="https://www.facebook.com/"
                   className="hover:underline hover:underline-offset-2"
