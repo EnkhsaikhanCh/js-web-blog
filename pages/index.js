@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <Slider />
       {/* <Trending /> */}
-      <Card hasProfile={false} />
+      <Card hasProfile={false} ViewAllButtonRender={true}/>
       <Footer />
     </div>
   );
