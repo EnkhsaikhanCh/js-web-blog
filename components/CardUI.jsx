@@ -4,7 +4,7 @@ export function CardUI({ article, hasProfile }) {
   return (
     <Link
       href={article.path}
-      className="flex flex-col gap-4 rounded-md border p-4 hover:bg-slate-50 hover:dark:border-neutral-300 "
+      className="flex flex-col gap-4 rounded-md border p-4 hover:bg-orange-50 hover:border-orange-300"
     >
       <img
         src={article.cover_image}
