@@ -3,11 +3,12 @@ import { Loading } from "./Loading";
 import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
 import { LoadNext } from "./LoadNext";
+import { Filter } from "./Filter";
 
-export function Card({ hasProfile, ViewAllButtonRender }) {
-  const [articles, setArticles] = useState();
+export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
+  const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedTag, setSelectedTag] = useState(null);
+  // const [selectedTag, setSelectedTag] = useState(null);
 
   const username = "simonholdorf";
   const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=`;
@@ -17,49 +18,40 @@ export function Card({ hasProfile, ViewAllButtonRender }) {
     fetch(`${apiUrl}${itemsPerPage}&page=1`)
       .then((response) => response.json())
       .then((data) => {
-        setArticles(data);
-      });
-  }, []);
-
-  function loadNext() {
-    fetch(`${apiUrl}${itemsPerPage}&page=${currentPage + 1}`)
-      .then((response) => response.json())
-      .then((data) => {
         setArticles([...articles, ...data]);
-        setCurrentPage(currentPage + 1);
       });
-  }
+  }, [currentPage]);
 
-  const filters = [
-    { label: "All", tag: null },
-    { label: "DevOps", tag: "devops" },
-    { label: "Cloud", tag: "cloud" },
-    { label: "Beginners", tag: "beginners" },
-    { label: "Programming", tag: "programming" },
-    { label: "Javascript", tag: "javascript" },
-  ];
+  // const filteredArticle = async (tag) => {
+  //   const response = await fetch(
+  //     `https://dev.to/api/articles?tag=${tag}&per_page=${itemsPerPage}`,
+  //   );
+  //   const dataJson = await response.json();
+  //   console.log(dataJson);
+  //   setArticles([...dataJson]);
+  //   setSelectedTag(tag);
+  // };
 
-  function handleTagSelect(tag) {
-    setSelectedTag(tag);
-    setCurrentPage(1);
-  }
-
-  function filterBySelectedTag(article) {
-    return article.tag_list.includes(selectedTag);
-  }
-
-  const filteredArticles = selectedTag
-    ? articles.filter(filterBySelectedTag)
-    : articles;
+  // const filters = [
+  //   { label: "All", tag: null },
+  //   { label: "DevOps", tag: "devops" },
+  //   { label: "Cloud", tag: "cloud" },
+  //   { label: "Beginners", tag: "beginners" },
+  //   { label: "Programming", tag: "programming" },
+  //   { label: "Javascript", tag: "javascript" },
+  // ];
 
   if (articles === undefined) return <Loading />;
 
   return (
     <div className="container mx-auto">
+      {/* Title */}
       <h1 className="px-4 text-3xl font-bold text-[#495057]">All Blog Post</h1>
+
+      {/* Filter section */}
       <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
-        {/* Filter section */}
-        <div className="flex flex-wrap items-center gap-1 font-semibold">
+        <Filter articles={articles} />
+        {/* <div className="flex flex-wrap items-center gap-1 font-semibold">
           {filters.map((filter) => (
             <button
               key={filter.label}
@@ -68,26 +60,27 @@ export function Card({ hasProfile, ViewAllButtonRender }) {
                   ? "border border-orange-300 bg-orange-50 text-orange-600"
                   : ""
               }`}
-              onClick={() => handleTagSelect(filter.tag)}
+              onClick={() => filteredArticle(filter.tag)}
             >
               {filter.label}
             </button>
           ))}
-        </div>
+        </div> */}
 
-        {/* View all button */}
+        {/* View all button - Components */}
         <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
       </div>
 
-      {/* Card maping */}
+      {/* Card maping - Components */}
       <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
-        {filteredArticles.map((article) => (
+        {articles.map((article) => (
           <CardUI key={article.id} article={article} hasProfile={hasProfile} />
         ))}
       </div>
 
-      {/* Load More button */}
-      <LoadNext loadNext={loadNext} />
+      {/* Load More button - Components */}
+      <LoadNext articles={articles} setArticles={setArticles} />
+      {/* <button onClick={() => setCurrentPage(currentPage + 1)}>Load more</button> */}
     </div>
   );
 }
