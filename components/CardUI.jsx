@@ -4,7 +4,7 @@ export function CardUI({ article, hasProfile }) {
   return (
     <Link
       href={article.path}
-      className="flex flex-col gap-4 rounded-md border p-4 hover:bg-orange-50 hover:border-orange-300"
+      className="flex flex-col gap-4 rounded-md border p-4 hover:border-orange-300 hover:bg-orange-50"
     >
       <img
         src={article.cover_image}
@@ -17,7 +17,7 @@ export function CardUI({ article, hasProfile }) {
             {article.tag_list.map((tag) => (
               <span
                 key={tag}
-                className="inline-block rounded bg-blue-200 px-[10px] py-1 text-sm text-blue-700"
+                className="inline-block rounded bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB]"
               >
                 {tag}
               </span>

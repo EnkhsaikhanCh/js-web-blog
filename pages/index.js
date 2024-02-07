@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header/Header";
 import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
-import { Card } from "@/components/Card";
+import { AllBlogPost } from "@/components/AllBlogPost";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -9,8 +9,8 @@ export default function Home() {
     <div>
       <Header />
       <Slider />
-      {/* <Trending /> */}
-      <Card hasProfile={false} ViewAllButtonRender={true}/>
+      <Trending />
+      <AllBlogPost hasProfile={false} ViewAllButtonRender={true} />
       <Footer />
     </div>
   );
