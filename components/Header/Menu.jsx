@@ -9,16 +9,20 @@ import Link from "next/link";
 export function Menu({ items }) {
   return (
     <>
-      <div className="hidden items-center md:flex gap-5">
+      <div className="hidden items-center gap-5 md:flex">
         {items.map((item) => (
-          <Link key={item.id} href={item.link}>
+          <Link
+            key={item.id}
+            href={item.link}
+            className="font-semibold text-[#495057] hover:text-black"
+          >
             {item.label}
           </Link>
         ))}
         <input
           type="search"
           placeholder="Search"
-          className="bg-[#F4F4F5] pl-[16px] pr-[8px] h-[36px] rounded-md"
+          className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px]"
         ></input>
       </div>
       <MobileMenu items={MenuData} />
@@ -56,14 +60,18 @@ function MobileMenu({ items }) {
         <div className="px-4 py-4">
           <div className="flex flex-col">
             {items.map((item) => (
-              <Link key={item.id} href={item.link}>
+              <Link
+                key={item.id}
+                href={item.link}
+                className="font-semibold text-[#495057] hover:text-black"
+              >
                 {item.label}
               </Link>
             ))}
             <input
               type="search"
               placeholder="Search"
-              className="bg-[#F4F4F5] pl-[16px] pr-[8px] h-[36px] rounded-md"
+              className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px]"
             ></input>
           </div>
         </div>
