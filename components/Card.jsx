@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
 import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
+import { LoadNext } from "./LoadNext";
+import { Filter } from "./Filter";
 
 export function Card({ hasProfile, ViewAllButtonRender }) {
   const [articles, setArticles] = useState();
@@ -38,10 +40,10 @@ export function Card({ hasProfile, ViewAllButtonRender }) {
     { label: "Javascript", tag: "javascript" },
   ];
 
-  const handleTagSelect = (tag) => {
+  function handleTagSelect(tag) {
     setSelectedTag(tag);
     setCurrentPage(1);
-  };
+  }
 
   function filterBySelectedTag(article) {
     return article.tag_list.includes(selectedTag);
@@ -57,6 +59,7 @@ export function Card({ hasProfile, ViewAllButtonRender }) {
     <div className="container mx-auto">
       <h1 className="px-4 text-3xl font-bold text-[#495057]">All Blog Post</h1>
       <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
+        {/* Filter section */}
         <div className="flex flex-wrap items-center gap-1 font-semibold">
           {filters.map((filter) => (
             <button
@@ -72,21 +75,20 @@ export function Card({ hasProfile, ViewAllButtonRender }) {
             </button>
           ))}
         </div>
+
+        {/* View all button */}
         <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
       </div>
+
+      {/* Card maping */}
       <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
         {filteredArticles.map((article) => (
           <CardUI key={article.id} article={article} hasProfile={hasProfile} />
         ))}
       </div>
-      <div className="mb-[70px] flex items-center justify-center">
-        <button
-          className="rounded-md border bg-slate-50 px-4 py-2 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
-          onClick={loadNext}
-        >
-          Load more
-        </button>
-      </div>
+
+      {/* Load More button */}
+      <LoadNext loadNext={loadNext} />
     </div>
   );
 }
