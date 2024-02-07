@@ -3,7 +3,6 @@ import { Loading } from "./Loading";
 import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
 import { LoadNext } from "./LoadNext";
-import { Filter } from "./Filter";
 
 export function Card({ hasProfile, ViewAllButtonRender }) {
   const [articles, setArticles] = useState();
