@@ -2,13 +2,34 @@ import { BlogData } from "@/data/BlogData";
 import { Forward_icon } from "./images/icons/Forward_icon";
 import { Back_icon } from "./images/icons/Back_icon";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export function Slider() {
+  const [articles, setArticles] = useState([]);
+
+  const username = "simonholdorf";
+  const apiUrl = `https://dev.to/api/articles?username=${username}`;
+  const itemsPerPage = 1;
+
+  useEffect(() => {
+    fetch(`${apiUrl}&per_page=${itemsPerPage}&page=1`)
+      .then((response) => response.json())
+      .then((data) => {
+        setArticles([...articles, ...data]);
+      });
+  }, []);
+
+  if (articles === undefined) return <Loading />;
+
   return (
     <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
       {/* <SliderCard /> */}
 
-      <SliderCard blog={BlogData[0]} />
+      {/* <div className="flex"> */}
+      {articles.map((card, id) => (
+        <SliderCard key={id} {...card} />
+      ))}
+      {/* </div> */}
 
       <div className="hidden gap-1 self-end md:flex">
         <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700">
@@ -22,24 +43,31 @@ export function Slider() {
   );
 }
 
-function SliderCard({ blog }) {
-  // const { id, title, tag, uploadedDate, image, link } = props;
+const SliderCard = (props) => {
+  const { path, social_image, tag_list, title, readable_publish_date } = props;
 
   return (
-    <Link href={blog.link} key="" className="relative rounded-md">
+    <Link href={path} key="" className="relative rounded-md">
       <img
-        src={blog.image}
+        src={social_image}
         className="aspect-video h-[300px] w-full rounded-md border object-cover md:h-[450px] lg:h-[600px]"
       />
       <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black">
         <div className="flex flex-col gap-[16px]">
-          <p className="md:py-[4px]text-white flex w-[97px] items-center justify-center rounded-md bg-[#4B6BFB] text-white md:px-[10px]">
-            {blog.tag}
-          </p>
-          <h1 className="md:text-4xl">{blog.title}</h1>
+          <div className="mb-2 flex flex-wrap gap-2">
+            {tag_list.map((tag) => (
+              <span
+                key={tag}
+                className="inline-block rounded bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB]"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <h1 className="md:text-4xl">{title}</h1>
         </div>
-        <p className="hidden md:flex">{blog.uploadedDate}</p>
+        <p className="hidden md:flex">{readable_publish_date}</p>
       </div>
     </Link>
   );
-}
+};
