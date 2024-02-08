@@ -23,12 +23,15 @@ export function ContactUs() {
           </div>
           <div className="flex flex-col gap-2 rounded-md border p-4">
             <h2 className="text-lg font-bold">Contact</h2>
-            <p className="text-[#696A75]">313-332-8662 info@email.com</p>
+            <div>
+              <p className="text-[#696A75]">info@email.com</p>
+              <p className="text-[#696A75]">313-332-8662</p>
+            </div>
           </div>
         </div>
         {/* 3 */}
         <div className="flex w-full flex-col gap-4 rounded-lg bg-[#F6F6F7] p-8">
-          <h2 className="text-lg font-bold">Leave message</h2>
+          <h2 className="text-lg font-bold">Leave a message</h2>
           <form action="" className="flex flex-col gap-3">
             <div className="flex flex-col gap-4 md:flex-row">
               <input
@@ -57,6 +60,11 @@ export function ContactUs() {
               placeholder="Write a message"
               className="resize-none rounded-md border border-gray-300 p-2"
             ></textarea>
+            <div className="mt-3 flex">
+              <button className="inline-block rounded-md border bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
+                Send Message
+              </button>
+            </div>
           </form>
         </div>
       </div>
