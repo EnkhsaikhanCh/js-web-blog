@@ -4,7 +4,7 @@ export function CardUI({ article, hasProfile }) {
   return (
     <Link
       href={article.path}
-      className="flex flex-col gap-4 rounded-md border p-4 hover:border-orange-300 hover:bg-orange-50"
+      className="flex flex-col gap-4 rounded-md border p-4 hover:border-orange-300 hover:bg-orange-50 dark:border-[#242933] dark:bg-[#242933] dark:hover:border-orange-300 dark:hover:bg-[#212630]"
     >
       <img
         src={article.social_image}
@@ -23,7 +23,9 @@ export function CardUI({ article, hasProfile }) {
               </span>
             ))}
           </div>
-          <h2 className="mb-5 font-bold">{article.title}</h2>
+          <h2 className="mb-5 font-bold dark:text-[#b2cdd6]">
+            {article.title}
+          </h2>
         </div>
         {/* bottom */}
         <div className="flex items-center justify-between">

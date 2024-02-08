@@ -23,7 +23,7 @@ export function Trending() {
   return (
     <div className="container mx-auto my-10 px-4 py-2">
       <h1 className="mb-5 text-3xl font-bold text-[#495057]">DevOps</h1>
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         {articles.map((card, id) => (
           <TrendingCard key={id} {...card} />
         ))}

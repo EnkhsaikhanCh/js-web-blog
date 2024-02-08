@@ -15,7 +15,7 @@ export function Menu({ items }) {
           <Link
             key={item.id}
             href={item.link}
-            className="font-semibold text-[#495057] hover:text-black"
+            className="font-semibold text-[#495057] hover:text-black dark:text-[#b2cdd6]"
           >
             {item.label}
           </Link>

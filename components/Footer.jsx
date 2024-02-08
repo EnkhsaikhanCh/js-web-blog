@@ -5,34 +5,40 @@ export function Footer() {
   return (
     <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
-        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#fef3ea] px-8 pb-[20px] pt-[30px]">
+        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#fef3ea] px-8 pb-[20px] pt-[30px] dark:divide-[#b2cdd6] dark:bg-[#242933]">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">
-                <h2 className="text-lg font-bold text-[#213343]">About</h2>
-                <p className="text-justify text-[#213343]">
+                <h2 className="text-lg font-bold text-[#213343] dark:text-[#b2cdd6]">
+                  About
+                </h2>
+                <p className="text-justify text-[#213343] dark:text-[#b2cdd6]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                   illo quae qui et. Dolorum nisi inventore aspernatur hic! Sequi
                   reprehenderit aliquam ea provident fugiat ducimus voluptate
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px]">
+              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px] dark:border-[#b2cdd6]">
                 <button className="flex justify-between gap-1 p-2">
-                  <div className="pl-2 text-[#696A75]">Email</div>
-                  <div>email@gmail.com</div>
+                  <div className="pl-2 text-[#696A75] dark:text-gray-400 ">
+                    Email
+                  </div>
+                  <div className="dark:text-[#b2cdd6]">email@gmail.com</div>
                   <Duplicate_icon />
                 </button>
                 <button className="flex justify-between gap-1 p-2">
-                  <div className="pl-2 text-[#696A75]">Phone</div>
-                  <div>+976 0000-0000</div>
+                  <div className="pl-2 text-[#696A75] dark:text-gray-400">
+                    Phone
+                  </div>
+                  <div className="dark:text-[#b2cdd6]">+976 0000-0000</div>
                   <Duplicate_icon />
                 </button>
               </div>
             </div>
 
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343]">
+              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343] dark:text-[#b2cdd6]">
                 <a
                   href="http://localhost:3000/"
                   className="hover:underline hover:underline-offset-2"
@@ -57,7 +63,7 @@ export function Footer() {
               </ul>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343]">
+              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343] dark:text-[#b2cdd6]">
                 <a
                   href="https://www.facebook.com/"
                   className="hover:underline hover:underline-offset-2"
@@ -94,7 +100,7 @@ export function Footer() {
             </div>
           </div>
           {/* 2 */}
-          <div className="flex items-center justify-center pt-[20px] md:justify-between">
+          <div className="flex items-center justify-center pt-[20px] md:justify-between dark:text-[#b2cdd6]">
             <div className="hidden lg:flex">
               <Logo />
             </div>
