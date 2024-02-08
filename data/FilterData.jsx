@@ -1,4 +1,4 @@
-export const FilterData = [
+export const filterData = [
   { id: 1, label: "All", tag: null },
   { id: 1, label: "DevOps", tag: "devops" },
   { id: 1, label: "Cloud", tag: "cloud" },

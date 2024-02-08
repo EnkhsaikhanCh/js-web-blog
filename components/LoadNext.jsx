@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function LoadNext({ articles, setArticles }) {
+export function LoadNext({ articles, setArticles, selectedTag }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const username = "simonholdorf";
@@ -8,7 +8,7 @@ export function LoadNext({ articles, setArticles }) {
   const itemsPerPage = 9;
 
   function loadNext() {
-    fetch(`${apiUrl}${itemsPerPage}&page=${currentPage + 1}`)
+    fetch(`${apiUrl}${itemsPerPage}&page=${currentPage + 1}&tag=${selectedTag}`)
       .then((response) => response.json())
       .then((data) => {
         setArticles([...articles, ...data]);
