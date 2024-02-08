@@ -3,9 +3,9 @@ import { Duplicate_icon } from "./images/icons/Duplicate_icon";
 
 export function Footer() {
   return (
-    <div className="mb-4 bg-[#f5f5f5]">
+    <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
-        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#f5e8dc] px-8 pb-[20px] pt-[30px]">
+        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#fef3ea] px-8 pb-[20px] pt-[30px]">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">

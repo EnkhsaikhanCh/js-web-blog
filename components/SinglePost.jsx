@@ -28,14 +28,14 @@ export function SinglePost({ tags }) {
   return (
     <>
       <Header />
-      <div className="bg-[#f5f5f5] px-2 py-[30px]">
+      <div className="px-2 py-[30px]">
         <div className="container mx-auto flex w-full flex-col gap-[15px] rounded-md bg-white  pb-4 lg:w-[800px]">
           <img
             src={article.cover_image}
             alt=""
             className="aspect-video h-[400px] w-full rounded-md object-cover lg:w-[800px]"
           />
-          <div className="mx-3 flex flex-col gap-5">
+          <div className="flex w-[100%] flex-col gap-5">
             <div className="flex items-center justify-between gap-6 rounded-md bg-[#f5f5f5] px-5 py-2 text-[#696A75]">
               <div className="flex items-center justify-center gap-4">
                 <img
