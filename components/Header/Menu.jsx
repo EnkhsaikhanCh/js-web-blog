@@ -5,6 +5,7 @@ import { IoIosSearch } from "react-icons/io";
 import { MenuData } from "@/data/MenuData";
 import { useState } from "react";
 import Link from "next/link";
+import { ThemeChanger } from "../ThemeChanger";
 
 export function Menu({ items }) {
   return (
@@ -19,10 +20,11 @@ export function Menu({ items }) {
             {item.label}
           </Link>
         ))}
+        <ThemeChanger />
         <input
           type="search"
           placeholder="Search"
-          className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px]"
+          className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] "
         ></input>
       </div>
       <MobileMenu items={MenuData} />

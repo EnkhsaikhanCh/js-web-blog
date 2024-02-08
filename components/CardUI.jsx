@@ -7,7 +7,7 @@ export function CardUI({ article, hasProfile }) {
       className="flex flex-col gap-4 rounded-md border p-4 hover:border-orange-300 hover:bg-orange-50"
     >
       <img
-        src={article.cover_image}
+        src={article.social_image}
         className="aspect-video rounded-md object-cover"
       />
       <div className="col-span-2 flex h-full flex-col justify-between p-2">
