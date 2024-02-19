@@ -6,7 +6,7 @@ export function Duplicate_icon() {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="flex h-5 w-5 justify-center text-[#696A75]"
+      className="flex h-5 w-5 justify-center text-[#ADBAC7]"
     >
       <path
         strokeLinecap="round"

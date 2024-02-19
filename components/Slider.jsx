@@ -50,7 +50,7 @@ const SliderCard = (props) => {
     <Link href={path} key="" className="relative rounded-md">
       <img
         src={social_image}
-        className="aspect-video h-[300px] w-full rounded-md border dark:hover:border-orange-300 object-cover md:h-[450px] lg:h-[600px] dark:border-[#242933]"
+        className="aspect-video h-[300px] w-full rounded-md border object-cover dark:border-[#242933] dark:hover:border-blue-300 md:h-[450px] lg:h-[600px]"
       />
       <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black dark:lg:bg-[#252a33]">
         <div className="flex flex-col gap-[16px]">
@@ -58,15 +58,17 @@ const SliderCard = (props) => {
             {tag_list.map((tag) => (
               <span
                 key={tag}
-                className="inline-block rounded bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB] border dark:border-orange-500 dark:text-orange-300"
+                className="inline-block rounded border bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB] dark:border-blue-500 dark:text-blue-300"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <h1 className="md:text-4xl dark:text-white">{title}</h1>
+          <h1 className="dark:text-white md:text-4xl">{title}</h1>
         </div>
-        <p className="hidden md:flex dark:text-white">{readable_publish_date}</p>
+        <p className="hidden dark:text-white md:flex">
+          {readable_publish_date}
+        </p>
       </div>
     </Link>
   );

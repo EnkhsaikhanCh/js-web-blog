@@ -22,7 +22,9 @@ export function Trending() {
 
   return (
     <div className="container mx-auto my-10 px-4 py-2">
-      <h1 className="mb-5 text-3xl font-bold text-[#495057]">DevOps</h1>
+      <h1 className="mb-5 text-3xl font-bold text-[#4a5058] dark:text-[#ADBAC7]">
+        DevOps
+      </h1>
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         {articles.map((card, id) => (
           <TrendingCard key={id} {...card} />
@@ -38,7 +40,7 @@ const TrendingCard = (props) => {
     <Link
       key={id}
       href={path}
-      className="relative flex flex-col rounded-md border hover:border-orange-300"
+      className="relative flex flex-col rounded-md border hover:border-blue-300 dark:border-[#2A303C] dark:hover:border-blue-300"
     >
       <img src={social_image} alt="" className="rounded-md" />
       <div className="absolute bottom-0 flex w-full flex-col gap-2 rounded-md bg-gradient-to-t from-slate-700 p-4 text-white">
@@ -49,7 +51,7 @@ const TrendingCard = (props) => {
             </span>
           ))}
         </div>
-        <p>{title}</p>
+        <p className="hover:underline hover:underline-offset-2">{title}</p>
       </div>
     </Link>
   );

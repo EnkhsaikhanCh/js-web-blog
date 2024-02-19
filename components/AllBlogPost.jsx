@@ -39,7 +39,7 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
     <div className="dark:bg-[#2a303c]">
       <div className="container mx-auto mt-[30px]">
         {/* Title */}
-        <h1 className="px-4 text-3xl font-bold text-[#495057] dark:text-[#b2cdd6]">
+        <h1 className="px-4 text-3xl font-bold text-[#495057] dark:text-[#ADBAC7]">
           All Blog Post
         </h1>
 

@@ -5,40 +5,34 @@ export function Footer() {
   return (
     <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
-        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-orange-300 rounded-xl bg-[#fef3ea] px-8 pb-[20px] pt-[30px] dark:divide-[#b2cdd6] dark:bg-[#242933]">
+        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-[#ADBAC7] rounded-xl bg-[#242933] px-8 pb-[20px] pt-[30px] dark:bg-[#242933]">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">
-                <h2 className="text-lg font-bold text-[#213343] dark:text-orange-300">
-                  About
-                </h2>
-                <p className="text-justify text-[#213343] dark:text-[#b2cdd6]">
+                <h2 className="text-lg font-bold text-blue-400">About</h2>
+                <p className="text-justify text-[#ADBAC7]">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
                   illo quae qui et. Dolorum nisi inventore aspernatur hic! Sequi
                   reprehenderit aliquam ea provident fugiat ducimus voluptate
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px] dark:border-orange-300">
-                <button className="flex justify-between gap-1 p-2">
-                  <div className="pl-2 text-[#696A75] dark:text-gray-400 ">
-                    Email
-                  </div>
-                  <div className="dark:text-[#b2cdd6]">email@gmail.com</div>
+              <div className="flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]">
+                <button className="flex justify-between gap-1 rounded-md p-2 hover:bg-slate-700">
+                  <div className="pl-2">Email</div>
+                  <div className="text-blue-300">email@gmail.com</div>
                   <Duplicate_icon />
                 </button>
-                <button className="flex justify-between gap-1 p-2">
-                  <div className="pl-2 text-[#696A75] dark:text-gray-400">
-                    Phone
-                  </div>
-                  <div className="dark:text-[#b2cdd6]">+976 0000-0000</div>
+                <button className="flex justify-between gap-1 rounded-md p-2 hover:bg-slate-700">
+                  <div className="pl-2">Phone</div>
+                  <div className="text-blue-300">+976 0000-0000</div>
                   <Duplicate_icon />
                 </button>
               </div>
             </div>
 
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343] dark:text-[#b2cdd6]">
+              <ul className="flex h-full w-[80px] flex-col gap-2 text-[#ADBAC7]">
                 <a
                   href="http://localhost:3000/"
                   className="hover:underline hover:underline-offset-2"
@@ -57,13 +51,10 @@ export function Footer() {
                 >
                   Contact
                 </a>
-                <a href="" className="hover:underline hover:underline-offset-2">
-                  Contact
-                </a>
               </ul>
             </div>
             <div className="flex flex-col items-center gap-2">
-              <ul className="flex h-full w-[80px] flex-col gap-2 font-bold text-[#213343] dark:text-[#b2cdd6]">
+              <ul className="flex h-full w-[80px] flex-col gap-2 text-[#ADBAC7]">
                 <a
                   href="https://www.facebook.com/"
                   className="hover:underline hover:underline-offset-2"
@@ -100,11 +91,13 @@ export function Footer() {
             </div>
           </div>
           {/* 2 */}
-          <div className="flex items-center justify-center pt-[20px] md:justify-between dark:text-[#b2cdd6]">
+          <div className="flex items-center justify-center pt-[20px] text-[#ADBAC7] md:justify-between">
             <div className="hidden lg:flex">
               <Logo />
             </div>
-            <div>Copyright © 2024 MetaBlog Inc. All rights reserved.</div>
+            <p className="text-xs sm:text-sm md:text-base">
+              Copyright © 2024 MetaBlog Inc. All rights reserved.
+            </p>
             <div className="hidden gap-5 md:flex ">
               <a href="" className="hover:underline hover:underline-offset-2">
                 Terms of Use

@@ -7,3 +7,23 @@
   aspect-ratio: 16 / 9;
   height: auto;
 }
+
+.prose p {
+  text-align: justify;
+}
+
+.prose h2 {
+  color: #60a5fb;
+}
+
+.prose h3 {
+  color: #60a5fb;
+}
+
+.prose a {
+  color: #60a5fb;
+}
+
+.prose strong {
+  color: #60a5fb;
+}
