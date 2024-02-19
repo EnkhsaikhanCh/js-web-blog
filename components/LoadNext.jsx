@@ -19,7 +19,7 @@ export function LoadNext({ articles, setArticles, selectedTag }) {
   return (
     <div className="mb-[70px] flex items-center justify-center">
       <button
-        className="rounded-md border bg-slate-50 px-4 py-2 text-slate-600 hover:border-slate-300 hover:bg-slate-100"
+        className="rounded-md border bg-slate-50 px-4 py-2 text-slate-600 hover:bg-slate-100 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] hover:border-orange-300 dark:hover:border-orange-300"
         onClick={loadNext}
       >
         Load more

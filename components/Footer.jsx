@@ -9,7 +9,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">
-                <h2 className="text-lg font-bold text-[#213343] dark:text-[#b2cdd6]">
+                <h2 className="text-lg font-bold text-[#213343] dark:text-orange-300">
                   About
                 </h2>
                 <p className="text-justify text-[#213343] dark:text-[#b2cdd6]">
@@ -19,7 +19,7 @@ export function Footer() {
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px] dark:border-[#b2cdd6]">
+              <div className="flex w-full flex-col rounded-md border border-orange-300 md:w-[300px] dark:border-orange-300">
                 <button className="flex justify-between gap-1 p-2">
                   <div className="pl-2 text-[#696A75] dark:text-gray-400 ">
                     Email

@@ -10,22 +10,24 @@ import { ThemeChanger } from "../ThemeChanger";
 export function Menu({ items }) {
   return (
     <>
-      <div className="hidden items-center gap-5 md:flex">
+      <div className="hidden items-center gap-1 md:flex">
         {items.map((item) => (
           <Link
             key={item.id}
             href={item.link}
-            className="font-semibold text-[#495057] hover:text-black dark:text-[#b2cdd6]"
+            className="hover:bg-orange-100 dark:hover:text-orange-300 dark:text-[#b2cdd6] h-[36px] justify-center flex items-center px-3 rounded-[4px] dark:hover:bg-[#3a4050]"
           >
             {item.label}
           </Link>
         ))}
+        <div className="flex gap-3 pl-[3px]">
         <ThemeChanger />
         <input
           type="search"
           placeholder="Search"
-          className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] "
+          className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] dark:bg-[#3a4050]"
         ></input>
+        </div>
       </div>
       <MobileMenu items={MenuData} />
     </>
@@ -65,7 +67,7 @@ function MobileMenu({ items }) {
               <Link
                 key={item.id}
                 href={item.link}
-                className="font-semibold text-[#495057] hover:text-black"
+                className="font-semibold text-[#495057] hover:text-orange-300"
               >
                 {item.label}
               </Link>

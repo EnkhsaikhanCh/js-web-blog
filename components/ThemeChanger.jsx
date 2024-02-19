@@ -25,7 +25,7 @@ export function ThemeChanger() {
 
   return (
     <button
-      className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#F4F4F5] dark:bg-[#000000]"
+      className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#F4F4F5] dark:bg-[#39404f] border dark:border-[#252a33] hover:border-orange-300 dark:hover:border-orange-300"
       onClick={changeTheme}
     >
       {theme === "light" && <CiSun />}

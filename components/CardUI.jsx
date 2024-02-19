@@ -17,7 +17,7 @@ export function CardUI({ article, hasProfile }) {
             {article.tag_list.map((tag) => (
               <span
                 key={tag}
-                className="inline-block rounded bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB]"
+                className="inline-block rounded border border-orange-300 bg-orange-50 px-[10px] py-1 text-sm text-orange-600 dark:border-orange-500 dark:bg-[#4B6BFB0D] dark:text-orange-300"
               >
                 {tag}
               </span>
