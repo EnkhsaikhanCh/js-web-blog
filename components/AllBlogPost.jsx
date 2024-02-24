@@ -3,7 +3,6 @@ import { Loading } from "./Loading";
 import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
 import { LoadNext } from "./LoadNext";
-import { filterData } from "@/data/filterData";
 import { Filter } from "./Filter";
 
 export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {

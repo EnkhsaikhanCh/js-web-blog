@@ -5,12 +5,12 @@ export function Loading() {
         <button
           disabled
           type="button"
-          className="me-2 inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black focus:ring-4 focus:ring-blue-300"
+          className="me-2 inline-flex items-center rounded-lg bg-white px-5 py-2.5 text-center text-sm font-medium text-black focus:ring-4 focus:ring-blue-300 dark:bg-[#262A33] dark:text-white"
         >
           <svg
             aria-hidden="true"
             role="status"
-            class="me-3 inline h-4 w-4 animate-spin text-black"
+            className="me-3 inline h-4 w-4 animate-spin text-black"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

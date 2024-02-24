@@ -1,7 +1,5 @@
-import { BlogData } from "@/data/BlogData";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { filterData } from "@/data/filterData";
 
 export function Trending() {
   const [articles, setArticles] = useState([]);

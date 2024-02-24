@@ -1,7 +1,5 @@
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { IoIosSearch } from "react-icons/io";
-
 import { MenuData } from "@/data/MenuData";
 import { useState } from "react";
 import Link from "next/link";
