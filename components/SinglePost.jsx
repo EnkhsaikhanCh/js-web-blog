@@ -36,8 +36,8 @@ export function SinglePost({ tags }) {
       <div className="px-2 py-[30px]">
         <div className="container mx-auto flex w-full flex-col gap-[15px] rounded-md bg-white  pb-4 dark:bg-[#2a303c] dark:text-[#ADBAC7] lg:w-[900px]">
           <img
-            src={article.cover_image}
-            alt=""
+            src={article.social_image}
+            alt={article.title}
             className="aspect-video h-[200px] w-full rounded-md object-cover md:h-[300px] lg:h-[400px] lg:w-[900px]"
           />
           <div className="flex w-[100%] flex-col gap-5">

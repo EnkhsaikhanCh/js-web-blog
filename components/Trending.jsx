@@ -40,7 +40,7 @@ const TrendingCard = (props) => {
       href={path}
       className="relative flex flex-col rounded-md border hover:border-blue-300 dark:border-[#2A303C] dark:hover:border-blue-300"
     >
-      <img src={social_image} alt="" className="rounded-md" />
+      <img src={social_image} alt={title} className="rounded-md" />
       <div className="absolute bottom-0 flex w-full flex-col gap-2 rounded-md bg-gradient-to-t from-slate-700 p-4 text-white">
         <div className="mb-2 hidden gap-2">
           {tag_list.map((tag) => (
