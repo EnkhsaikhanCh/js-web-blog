@@ -1,25 +1,37 @@
-import { BlogData } from "@/data/BlogData";
 import { Forward_icon } from "./images/icons/Forward_icon";
 import { Back_icon } from "./images/icons/Back_icon";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Loading } from "./Loading";
+
+const username = "simonholdorf";
+const apiUrl = `https://dev.to/api/articles?username=${username}`;
+const itemsPerPage = 1;
+const initialPage = 1; 
 
 export function Slider() {
   const [articles, setArticles] = useState([]);
-
-  const username = "simonholdorf";
-  const apiUrl = `https://dev.to/api/articles?username=${username}`;
-  const itemsPerPage = 1;
+  const [page, setPage] = useState(initialPage);
 
   useEffect(() => {
-    fetch(`${apiUrl}&per_page=${itemsPerPage}&page=1`)
+    fetch(`${apiUrl}&per_page=${itemsPerPage}&page=${page}`)
       .then((response) => response.json())
       .then((data) => {
-        setArticles([...articles, ...data]);
+        setArticles(data);
       });
-  }, []);
+  }, [page]);
 
-  if (articles === undefined) return <Loading />;
+  function backClick() {
+    if (page > 1) {
+      setPage((prevPage) => prevPage - 1);
+    }
+  }
+  
+  function forwardClick() {
+    setPage((prevPage) => prevPage + 1);
+  }
+
+  if (articles.length === 0) return <Loading />;
 
   return (
     <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
@@ -32,10 +44,10 @@ export function Slider() {
       {/* </div> */}
 
       <div className="hidden gap-1 self-end md:flex">
-        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700">
+        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 dark:bg-[#262A33]" onClick={backClick}>
           <Back_icon />
         </button>
-        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700">
+        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 dark:bg-[#262A33]" onClick={forwardClick}>
           <Forward_icon />
         </button>
       </div>
