@@ -28,6 +28,10 @@
   color: #60a5fb;
 }
 
+.prose pre {
+  background-color: #282c34;
+}
+
 .prose .highlight-action {
   display: none;
 }

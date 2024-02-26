@@ -50,7 +50,7 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
           <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
         </div>
 
-        {/* Card maping - Components */}
+        {/* Card mapping - Components */}
         <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
             <CardUI
@@ -67,7 +67,6 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
           setArticles={setArticles}
           selectedTag={selectedTag}
         />
-        {/* <button onClick={() => setCurrentPage(currentPage + 1)}>Load more</button> */}
       </div>
     </div>
   );

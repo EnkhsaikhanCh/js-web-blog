@@ -2,6 +2,9 @@ import React, { useRef, useState } from "react";
 import { Logo } from "./images/Logo";
 import { CopiedPopup } from "./CopiedPopup";
 import { BsCopy } from "react-icons/bs";
+import { socialData } from "@/data/socialDate";
+import { MenuData } from "@/data/MenuData";
+import { policyMenuData } from "@/data/policyMenuData";
 
 const CopyPopup = ({ isVisible }) => {
   return (
@@ -74,60 +77,30 @@ export function Footer() {
 
             <div className="flex flex-col items-center gap-2">
               <ul className="flex h-full w-[80px] flex-col gap-2 text-[#ADBAC7]">
-                <a
-                  href="http://localhost:3000/"
-                  className="hover:underline hover:underline-offset-2"
-                >
-                  Home
-                </a>
-                <a
-                  href="/blog"
-                  className="hover:underline hover:underline-offset-2"
-                >
-                  Blog
-                </a>
-                <a
-                  href="/contact"
-                  className="hover:underline hover:underline-offset-2"
-                >
-                  Contact
-                </a>
+                {MenuData.map((menu) => (
+                  <a
+                    key={menu.id}
+                    href={menu.link}
+                    className="hover:underline hover:underline-offset-2"
+                  >
+                    {menu.label}
+                  </a>
+                ))}
               </ul>
             </div>
             <div className="flex flex-col items-center gap-2">
               <ul className="flex h-full w-[80px] flex-col gap-2 text-[#ADBAC7]">
-                <a
-                  href="https://www.facebook.com/"
-                  className="hover:underline hover:underline-offset-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Facebook
-                </a>
-                <a
-                  href="https://www.linkedin.com/"
-                  className="hover:underline hover:underline-offset-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Linkedin
-                </a>
-                <a
-                  href="https://www.instagram.com/"
-                  className="hover:underline hover:underline-offset-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Instagram
-                </a>
-                <a
-                  href="https://twitter.com/"
-                  className="hover:underline hover:underline-offset-2"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
+                {socialData.map((social) => (
+                  <a
+                    key={social.id}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline hover:underline-offset-2"
+                  >
+                    {social.label}
+                  </a>
+                ))}
               </ul>
             </div>
           </div>
@@ -140,15 +113,17 @@ export function Footer() {
               Copyright © 2024 MetaBlog Inc. All rights reserved.
             </p>
             <div className="hidden gap-5 md:flex ">
-              <a href="" className="hover:underline hover:underline-offset-2">
-                Terms of Use
-              </a>
-              <a href="" className="hover:underline hover:underline-offset-2">
-                Privacy Policy
-              </a>
-              <a href="" className="hover:underline hover:underline-offset-2">
-                Cookie Policy
-              </a>
+              {policyMenuData.map((policy) => (
+                <a
+                  key={policy.id}
+                  href={policy.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline hover:underline-offset-2"
+                >
+                  {policy.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>

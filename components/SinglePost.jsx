@@ -45,7 +45,7 @@ export function SinglePost({ tags }) {
               <div className="flex items-center justify-center gap-4">
                 <img
                   src={article.user.profile_image}
-                  alt=""
+                  alt={article.user.username}
                   className="h-[35px] w-[35px] rounded-full"
                 />
                 <p className="text-blue-500 dark:text-blue-300">
