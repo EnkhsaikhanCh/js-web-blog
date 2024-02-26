@@ -28,10 +28,6 @@
   color: #60a5fb;
 }
 
-.prose pre {
-  padding: 10px;
-}
-
-.prose .highlight-action{
+.prose .highlight-action {
   display: none;
 }

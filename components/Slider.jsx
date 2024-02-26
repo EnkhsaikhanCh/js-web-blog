@@ -1,13 +1,13 @@
-import { Forward_icon } from "./images/icons/Forward_icon";
-import { Back_icon } from "./images/icons/Back_icon";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
+import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
 
 const username = "simonholdorf";
 const apiUrl = `https://dev.to/api/articles?username=${username}`;
 const itemsPerPage = 1;
-const initialPage = 1; 
+const initialPage = 1;
 
 export function Slider() {
   const [articles, setArticles] = useState([]);
@@ -26,7 +26,7 @@ export function Slider() {
       setPage((prevPage) => prevPage - 1);
     }
   }
-  
+
   function forwardClick() {
     setPage((prevPage) => prevPage + 1);
   }
@@ -44,11 +44,17 @@ export function Slider() {
       {/* </div> */}
 
       <div className="hidden gap-1 self-end md:flex">
-        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 dark:bg-[#262A33]" onClick={backClick}>
-          <Back_icon />
+        <button
+          className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+          onClick={backClick}
+        >
+          <IoIosArrowBack />
         </button>
-        <button className="rounded-md transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 dark:bg-[#262A33]" onClick={forwardClick}>
-          <Forward_icon />
+        <button
+          className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+          onClick={forwardClick}
+        >
+          <IoIosArrowForward />
         </button>
       </div>
     </div>

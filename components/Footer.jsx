@@ -1,13 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import { Logo } from "./images/Logo";
-import { Duplicate_icon } from "./images/icons/Duplicate_icon";
-import { CopiedPopup } from './CopiedPopup';
+import { CopiedPopup } from "./CopiedPopup";
+import { BsCopy } from "react-icons/bs";
 
 const CopyPopup = ({ isVisible }) => {
-  return isVisible && (
-    <div>
-      <CopiedPopup />
-    </div>
+  return (
+    isVisible && (
+      <div>
+        <CopiedPopup />
+      </div>
+    )
   );
 };
 
@@ -16,13 +18,12 @@ export function Footer() {
   const phoneRef = useRef(null);
   const [isCopied, setIsCopied] = useState(false);
 
-
   const copyToClipboard = (ref) => {
     const range = document.createRange();
     range.selectNode(ref.current);
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(range);
-    document.execCommand('copy');
+    document.execCommand("copy");
     window.getSelection().removeAllRanges();
     setIsCopied(true);
   };
@@ -46,22 +47,26 @@ export function Footer() {
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px] ${isCopied ? 'copied-animation' : ''}`}">
+              <div className="${isCopied ? 'copied-animation' : ''}`} flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]">
                 <button
-                  className="flex justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
+                  className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
                   onClick={() => copyToClipboard(emailRef)}
                 >
                   <div className="pl-2">Email</div>
-                  <div className="text-blue-300" ref={emailRef}>email@gmail.com</div>
-                  <Duplicate_icon />
+                  <div className="text-blue-300" ref={emailRef}>
+                    email@gmail.com
+                  </div>
+                  <BsCopy />
                 </button>
                 <button
-                  className="flex justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
+                  className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
                   onClick={() => copyToClipboard(phoneRef)}
                 >
                   <div className="pl-2">Phone</div>
-                  <div className="text-blue-300" ref={phoneRef}>+976 0000-0000</div>
-                  <Duplicate_icon />
+                  <div className="text-blue-300" ref={phoneRef}>
+                    +976 0000-0000
+                  </div>
+                  <BsCopy />
                 </button>
               </div>
               <CopyPopup isVisible={isCopied} />

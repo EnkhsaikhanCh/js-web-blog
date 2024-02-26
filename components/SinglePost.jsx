@@ -4,8 +4,8 @@ import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { Loading } from "./Loading";
 import { Footer } from "./Footer";
-import hljs from 'highlight.js';
-import 'highlight.js/styles/atom-one-dark.css';
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark.css";
 
 export function SinglePost({ tags }) {
   const [article, setArticle] = useState();
@@ -19,7 +19,7 @@ export function SinglePost({ tags }) {
         .then((response) => response.json())
         .then((data) => {
           setArticle(data);
-          document.querySelectorAll('pre code').forEach((el) => {
+          document.querySelectorAll("pre code").forEach((el) => {
             hljs.highlightElement(el);
           });
         });
