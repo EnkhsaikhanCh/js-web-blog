@@ -6,7 +6,7 @@ export function Filter({ onTagChange, selectedTag }) {
       {filterData.map((filter) => (
         <button
           key={filter.label}
-          className={`rounded-md border px-4 py-1 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 dark:bg-[#242933] dark:hover:text-blue-400 ${
+          className={`rounded-md border bg-white px-4 py-1 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 dark:bg-[#2D333B] dark:hover:text-blue-400 ${
             selectedTag === filter.tag
               ? "border border-blue-500 bg-blue-50 text-blue-600 dark:text-blue-400"
               : "dark:border-[1px] dark:border-[#252a33]"

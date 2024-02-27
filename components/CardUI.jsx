@@ -4,14 +4,13 @@ export function CardUI({ article, hasProfile }) {
   return (
     <Link
       href={article.path}
-      className="flex flex-col gap-4 rounded-md border p-4 hover:border-blue-300 hover:bg-[rgba(0,0,0,.02)] dark:border-[#242933] dark:bg-[#242933] dark:hover:border-blue-500 dark:hover:bg-[#212630]"
+      className="flex flex-col gap-4 rounded-md border bg-white p-4 hover:border-blue-300 hover:bg-[rgba(0,0,0,.02)] hover:bg-slate-50 dark:border-[#242933] dark:bg-[#2D333B] dark:hover:border-blue-500 dark:hover:bg-[#313840]"
     >
       <img
         src={article.social_image}
         className="aspect-video rounded-md object-cover"
       />
       <div className="col-span-2 flex h-full flex-col justify-between p-2">
-        {/* title, tag */}
         <div>
           <div className="mb-2 flex flex-wrap gap-2">
             {article.tag_list.map((tag) => (
@@ -27,7 +26,6 @@ export function CardUI({ article, hasProfile }) {
             {article.title}
           </h2>
         </div>
-        {/* bottom */}
         <div className="flex items-center justify-between">
           {hasProfile && (
             <div className="flex items-center gap-2">

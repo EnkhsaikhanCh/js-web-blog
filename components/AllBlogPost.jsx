@@ -35,39 +35,33 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
   if (articles === undefined) return <Loading />;
 
   return (
-    <div className="dark:bg-[#2a303c]">
-      <div className="container mx-auto mt-[30px]">
-        {/* Title */}
-        <h1 className="px-4 text-3xl font-bold text-[#495057] dark:text-[#ADBAC7]">
-          All Blog Post
-        </h1>
+    <div className="container mx-auto mt-[30px]">
+      {/* Title */}
+      <h1 className="px-4 text-3xl font-bold text-[#495057] dark:text-[#ADBAC7]">
+        All Blog Post
+      </h1>
 
-        {/* Filter section */}
-        <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
-          <Filter onTagChange={filteredArticle} selectedTag={selectedTag} />
+      {/* Filter section */}
+      <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
+        <Filter onTagChange={filteredArticle} selectedTag={selectedTag} />
 
-          {/* View all button - Components */}
-          <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
-        </div>
-
-        {/* Card mapping - Components */}
-        <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((article) => (
-            <CardUI
-              key={article.id}
-              article={article}
-              hasProfile={hasProfile}
-            />
-          ))}
-        </div>
-
-        {/* Load More button - Components */}
-        <LoadNext
-          articles={articles}
-          setArticles={setArticles}
-          selectedTag={selectedTag}
-        />
+        {/* View all button - Components */}
+        <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
       </div>
+
+      {/* Card mapping - Components */}
+      <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
+        {articles.map((article) => (
+          <CardUI key={article.id} article={article} hasProfile={hasProfile} />
+        ))}
+      </div>
+
+      {/* Load More button - Components */}
+      <LoadNext
+        articles={articles}
+        setArticles={setArticles}
+        selectedTag={selectedTag}
+      />
     </div>
   );
 }

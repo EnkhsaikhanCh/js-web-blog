@@ -13,7 +13,7 @@ export function Menu({ items }) {
           <Link
             key={item.id}
             href={item.link}
-            className="flex h-[36px] items-center justify-center rounded-[4px] px-3 hover:bg-[#f4f4f5] dark:text-[#ADBAC7] dark:hover:bg-[#3a4050] dark:hover:text-blue-300"
+            className="flex h-[36px] items-center justify-center rounded-[4px] px-3 hover:bg-[#f4f4f5] hover:text-blue-400 dark:text-[#ADBAC7] dark:hover:bg-[#313840] dark:hover:text-blue-300"
           >
             {item.label}
           </Link>
@@ -46,7 +46,7 @@ function MobileMenu({ items }) {
   return (
     <>
       <button className="sm:flex md:hidden" onClick={openMenu}>
-        <HiOutlineMenu className="h-[32px] w-[32px]" />
+        <HiOutlineMenu className="h-[32px] w-[32px] dark:text-[#ADBAC7]" />
       </button>
       {visible && <div className="fixed inset-0 bg-gray-200/70"></div>}
       <div
@@ -69,7 +69,7 @@ function MobileMenu({ items }) {
               <Link
                 key={item.id}
                 href={item.link}
-                className="font-semibold text-[#495057] hover:text-blue-300 dark:text-[#adbac7]"
+                className="ml-2 font-semibold text-[#495057] hover:text-blue-300 dark:text-[#adbac7]"
               >
                 {item.label}
               </Link>

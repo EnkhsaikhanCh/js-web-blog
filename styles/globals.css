@@ -10,6 +10,7 @@
 
 .prose p {
   text-align: justify;
+  overflow-wrap: break-word;
 }
 
 .prose h2 {
@@ -22,6 +23,8 @@
 
 .prose a {
   color: #60a5fb;
+  text-wrap: wrap;
+  display: block;
 }
 
 .prose strong {

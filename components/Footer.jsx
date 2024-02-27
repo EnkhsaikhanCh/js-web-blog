@@ -7,7 +7,10 @@ import { MenuData } from "@/data/MenuData";
 import { policyMenuData } from "@/data/policyMenuData";
 
 const CopyButton = ({ label, value, onCopy, emailRef }) => (
-  <button className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700" onClick={onCopy}>
+  <button
+    className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
+    onClick={onCopy}
+  >
     <div className="pl-2">{label}</div>
     <div className="text-blue-300" ref={value}>
       {value === emailRef ? "email@gmail.com" : "+976 0000-0000"}
@@ -40,7 +43,7 @@ export function Footer() {
   return (
     <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
-        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-[#ADBAC7] rounded-xl bg-[#242933] px-8 pb-[20px] pt-[30px] dark:bg-[#242933]">
+        <div className="mx-4 flex flex-col gap-[50px] divide-y divide-[#ADBAC7] rounded-xl bg-[#2D333B] px-8 pb-[20px] pt-[30px] dark:bg-[#2D333B]">
           <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
             <div className="hidden flex-col gap-5 md:flex">
               <div className="flex flex-col gap-1">
@@ -52,14 +55,23 @@ export function Footer() {
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className={`copied-animation ${isCopied ? 'copied-animation' : ''} flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]`}>
-                <CopyButton label="Email" value={emailRef} onCopy={() => copyToClipboard(emailRef)} emailRef={emailRef}/>
-                <CopyButton label="Phone" value={phoneRef} onCopy={() => copyToClipboard(phoneRef)} />
+              <div
+                className={`copied-animation ${isCopied ? "copied-animation" : ""} flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]`}
+              >
+                <CopyButton
+                  label="Email"
+                  value={emailRef}
+                  onCopy={() => copyToClipboard(emailRef)}
+                  emailRef={emailRef}
+                />
+                <CopyButton
+                  label="Phone"
+                  value={phoneRef}
+                  onCopy={() => copyToClipboard(phoneRef)}
+                />
                 <CopyPopup isVisible={isCopied} />
               </div>
-              {/* <CopyPopup isVisible={isCopied} /> */}
             </div>
-
             <div className="flex flex-col items-center gap-2">
               <ul className="flex h-full w-[80px] flex-col gap-2 text-[#ADBAC7]">
                 {MenuData.map((menu) => (
@@ -89,7 +101,6 @@ export function Footer() {
               </ul>
             </div>
           </div>
-          {/* 2 */}
           <div className="flex items-center justify-center pt-[20px] text-[#ADBAC7] md:justify-between">
             <div className="hidden lg:flex">
               <Logo />

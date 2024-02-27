@@ -38,12 +38,10 @@ export function Slider() {
         <SliderCard key={id} {...card} />
       ))}
 
-      {articles.length && (
-        <div className="hidden gap-1 self-end md:flex">
-          <NavigationButton onClick={backClick} direction="back" />
-          <NavigationButton onClick={forwardClick} direction="forward" />
-        </div>
-      )}
+      <div className="hidden gap-1 self-end md:flex">
+        <NavigationButton onClick={backClick} direction="back" />
+        <NavigationButton onClick={forwardClick} direction="forward" />
+      </div>
     </div>
   );
 }
@@ -71,7 +69,7 @@ const SliderCard = (props) => {
         src={social_image}
         className="aspect-video h-[300px] w-full rounded-md border object-cover dark:border-[#242933] dark:hover:border-blue-300 md:h-[450px] lg:h-[600px]"
       />
-      <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black dark:lg:bg-[#252a33]">
+      <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black dark:lg:bg-[#2D333B] dark:lg:hover:bg-[#313840]">
         <div className="flex flex-col gap-[16px]">
           <div className="mb-2 flex flex-wrap gap-2">
             {tag_list.map((tag) => (
