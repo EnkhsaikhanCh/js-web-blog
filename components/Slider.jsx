@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
-import { IoIosArrowForward } from "react-icons/io";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 const username = "simonholdorf";
 const apiUrl = `https://dev.to/api/articles?username=${username}`;
@@ -35,31 +34,33 @@ export function Slider() {
 
   return (
     <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
-      {/* <SliderCard /> */}
-
-      {/* <div className="flex"> */}
       {articles.map((card, id) => (
         <SliderCard key={id} {...card} />
       ))}
-      {/* </div> */}
 
-      <div className="hidden gap-1 self-end md:flex">
-        <button
-          className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
-          onClick={backClick}
-        >
-          <IoIosArrowBack />
-        </button>
-        <button
-          className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
-          onClick={forwardClick}
-        >
-          <IoIosArrowForward />
-        </button>
-      </div>
+      {articles.length && (
+        <div className="hidden gap-1 self-end md:flex">
+          <NavigationButton onClick={backClick} direction="back" />
+          <NavigationButton onClick={forwardClick} direction="forward" />
+        </div>
+      )}
     </div>
   );
 }
+
+const NavigationButton = ({ onClick, direction }) => {
+  const icon =
+    direction === "back" ? <IoIosArrowBack /> : <IoIosArrowForward />;
+
+  return (
+    <div
+      className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+      onClick={onClick}
+    >
+      {icon}
+    </div>
+  );
+};
 
 const SliderCard = (props) => {
   const { path, social_image, tag_list, title, readable_publish_date } = props;
@@ -84,7 +85,7 @@ const SliderCard = (props) => {
           </div>
           <h1 className="dark:text-white md:text-4xl">{title}</h1>
         </div>
-        <p className="hidden dark:text-white md:flex">
+        <p className="hidden text-[#ADBAC7] dark:text-[#ADBAC7] md:flex">
           {readable_publish_date}
         </p>
       </div>

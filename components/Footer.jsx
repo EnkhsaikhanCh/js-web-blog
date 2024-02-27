@@ -6,15 +6,17 @@ import { socialData } from "@/data/socialDate";
 import { MenuData } from "@/data/MenuData";
 import { policyMenuData } from "@/data/policyMenuData";
 
-const CopyPopup = ({ isVisible }) => {
-  return (
-    isVisible && (
-      <div>
-        <CopiedPopup />
-      </div>
-    )
-  );
-};
+const CopyButton = ({ label, value, onCopy, emailRef }) => (
+  <button className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700" onClick={onCopy}>
+    <div className="pl-2">{label}</div>
+    <div className="text-blue-300" ref={value}>
+      {value === emailRef ? "email@gmail.com" : "+976 0000-0000"}
+    </div>
+    <BsCopy />
+  </button>
+);
+
+const CopyPopup = ({ isVisible }) => isVisible && <CopiedPopup />;
 
 export function Footer() {
   const emailRef = useRef(null);
@@ -24,10 +26,10 @@ export function Footer() {
   const copyToClipboard = (ref) => {
     const range = document.createRange();
     range.selectNode(ref.current);
-    window.getSelection().removeAllRanges();
-    window.getSelection().addRange(range);
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(range);
     document.execCommand("copy");
-    window.getSelection().removeAllRanges();
+    document.getSelection().removeAllRanges();
     setIsCopied(true);
   };
 
@@ -50,29 +52,12 @@ export function Footer() {
                   iure vitae laborum quae.
                 </p>
               </div>
-              <div className="${isCopied ? 'copied-animation' : ''}`} flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]">
-                <button
-                  className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
-                  onClick={() => copyToClipboard(emailRef)}
-                >
-                  <div className="pl-2">Email</div>
-                  <div className="text-blue-300" ref={emailRef}>
-                    email@gmail.com
-                  </div>
-                  <BsCopy />
-                </button>
-                <button
-                  className="flex items-center justify-between gap-1 rounded-md p-2 hover:bg-slate-700"
-                  onClick={() => copyToClipboard(phoneRef)}
-                >
-                  <div className="pl-2">Phone</div>
-                  <div className="text-blue-300" ref={phoneRef}>
-                    +976 0000-0000
-                  </div>
-                  <BsCopy />
-                </button>
+              <div className={`copied-animation ${isCopied ? 'copied-animation' : ''} flex w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:w-[300px]`}>
+                <CopyButton label="Email" value={emailRef} onCopy={() => copyToClipboard(emailRef)} emailRef={emailRef}/>
+                <CopyButton label="Phone" value={phoneRef} onCopy={() => copyToClipboard(phoneRef)} />
+                <CopyPopup isVisible={isCopied} />
               </div>
-              <CopyPopup isVisible={isCopied} />
+              {/* <CopyPopup isVisible={isCopied} /> */}
             </div>
 
             <div className="flex flex-col items-center gap-2">
