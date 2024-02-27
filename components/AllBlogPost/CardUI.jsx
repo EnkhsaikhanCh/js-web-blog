@@ -11,35 +11,18 @@ export function CardUI({ article, hasProfile, isLoading }) {
     >
       <img
         src={article.social_image}
+        alt={article.title}
         className="aspect-video rounded-md object-cover"
       />
       <div className="col-span-2 flex h-full flex-col justify-between p-2">
         <div>
-          <div className="mb-2 flex flex-wrap gap-2">
-            {article.tag_list.map((tag) => (
-              <span
-                key={tag}
-                className="inline-block rounded border border-blue-100 bg-blue-100 px-[10px] py-1 text-sm text-blue-600 dark:border-blue-500 dark:bg-[#4B6BFB0D] dark:text-blue-300"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <ArticleTags tagList={article.tag_list} />
           <h2 className="mb-5 font-bold hover:underline hover:underline-offset-2 dark:text-[#ADBAC7]">
             {article.title}
           </h2>
         </div>
         <div className="flex items-center justify-between">
-          {hasProfile && (
-            <div className="flex items-center gap-2">
-              <img
-                src={article.user.profile_image}
-                alt=""
-                className="h-[25px] w-[25px] rounded-full"
-              />
-              <p className="text-[#ADBAC7]">{article.user.username}</p>
-            </div>
-          )}
+          {hasProfile && <UserInfo user={article.user} />}
 
           <p className="text-[#ADBAC7]">{article.readable_publish_date}</p>
         </div>
@@ -47,6 +30,34 @@ export function CardUI({ article, hasProfile, isLoading }) {
     </Link>
   );
 }
+
+const ArticleTags = ({ tagList }) => {
+  return (
+    <div className="mb-2 flex flex-wrap gap-2">
+      {tagList.map((tag) => (
+        <span
+          key={tag}
+          className="inline-block rounded border border-blue-100 bg-blue-100 px-[10px] py-1 text-sm text-blue-600 dark:border-blue-500 dark:bg-[#4B6BFB0D] dark:text-blue-300"
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+};
+
+const UserInfo = ({ user }) => {
+  return (
+    <div className="flex items-center gap-2">
+      <img
+        src={user.profile_image}
+        alt={user.username}
+        className="h-[25px] w-[25px] rounded-full"
+      />
+      <p className="text-[#ADBAC7]">{user.username}</p>
+    </div>
+  );
+};
 
 const Loader = () => {
   return (
