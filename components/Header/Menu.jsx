@@ -3,12 +3,13 @@ import { IoClose } from "react-icons/io5";
 import { MenuData } from "@/data/MenuData";
 import { useState } from "react";
 import Link from "next/link";
-import { ThemeChanger } from "../ThemeChanger";
+import { ThemeChanger } from "./ThemeChanger";
 
 export function Menu({ items }) {
   return (
     <>
       <div className="hidden items-center gap-1 md:flex">
+        {/* Menu */}
         {items.map((item) => (
           <Link
             key={item.id}
@@ -18,6 +19,8 @@ export function Menu({ items }) {
             {item.label}
           </Link>
         ))}
+
+        {/* Theme, Search */}
         <div className="flex gap-3 pl-[10px]">
           <ThemeChanger />
           <input
@@ -27,6 +30,8 @@ export function Menu({ items }) {
           ></input>
         </div>
       </div>
+
+      {/* Mobile menu */}
       <MobileMenu items={MenuData} />
     </>
   );
@@ -54,16 +59,23 @@ function MobileMenu({ items }) {
           visible ? "right-0" : "-right-full"
         } `}
       >
+        {/* Theme, Close */}
         <div className="flex justify-between">
+          {/* Close button */}
           <button
             onClick={closeMenu}
             className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#f4f4f5] dark:bg-[#3b4050] dark:text-white"
           >
             <IoClose />
           </button>
+
+          {/* Theme button*/}
           <ThemeChanger />
         </div>
+
+        {/* Menu, Search */}
         <div className="">
+          {/* Menu */}
           <div className="flex flex-col gap-3">
             {items.map((item) => (
               <Link
@@ -74,6 +86,8 @@ function MobileMenu({ items }) {
                 {item.label}
               </Link>
             ))}
+
+            {/* Search */}
             <input
               type="search"
               placeholder="Search"

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Loading } from "./Loading";
+import { Loading } from "../Loading";
 import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
 import { LoadNext } from "./LoadNext";
@@ -9,6 +9,7 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const username = "simonholdorf";
   const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=`;
@@ -19,8 +20,17 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
       .then((response) => response.json())
       .then((data) => {
         setArticles([...articles, ...data]);
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, [currentPage]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+  }, []);
 
   const filteredArticle = async (tag) => {
     const response = await fetch(
@@ -31,8 +41,6 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
     setArticles([...dataJson]);
     setSelectedTag(tag);
   };
-
-  if (articles === undefined) return <Loading />;
 
   return (
     <div className="container mx-auto mt-[30px]">
@@ -52,7 +60,12 @@ export function AllBlogPost({ hasProfile, ViewAllButtonRender, loadNext }) {
       {/* Card mapping - Components */}
       <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article) => (
-          <CardUI key={article.id} article={article} hasProfile={hasProfile} />
+          <CardUI
+            key={article.id}
+            article={article}
+            hasProfile={hasProfile}
+            isLoading={isLoading}
+          />
         ))}
       </div>
 

@@ -1,9 +1,9 @@
-import { Header } from "./Header/Header";
+import { Header } from "./Header/HeaderMain";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { Loading } from "./Loading";
-import { Footer } from "./Footer";
+import { Footer } from "./Footer/FooterMain";
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
 

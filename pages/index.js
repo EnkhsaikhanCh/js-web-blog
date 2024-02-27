@@ -1,8 +1,8 @@
-import { Header } from "@/components/Header/Header";
+import { Header } from "@/components/Header/HeaderMain";
 import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
-import { AllBlogPost } from "@/components/AllBlogPost";
-import { Footer } from "@/components/Footer";
+import { AllBlogPost } from "@/components/AllBlogPost/AllBlogPostMain";
+import { Footer } from "@/components/Footer/FooterMain";
 
 export default function Home() {
   return (
