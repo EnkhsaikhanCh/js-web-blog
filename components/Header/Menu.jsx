@@ -32,12 +32,15 @@ export function Menu({ items }) {
       </div>
 
       {/* Mobile menu */}
-      <MobileMenu items={MenuData} />
+      <div className="flex gap-2 md:hidden">
+        <ThemeChanger />
+        <MobileMenu items={MenuData} />
+      </div>
     </>
   );
 }
 
-function MobileMenu({ items }) {
+function MobileMenu({ items, item }) {
   const [visible, setVisible] = useState(false);
 
   function openMenu() {
@@ -59,43 +62,54 @@ function MobileMenu({ items }) {
           visible ? "right-0" : "-right-full"
         } `}
       >
-        {/* Theme, Close */}
         <div className="flex justify-between">
-          {/* Close button */}
-          <button
-            onClick={closeMenu}
-            className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#f4f4f5] dark:bg-[#3b4050] dark:text-white"
-          >
-            <IoClose />
-          </button>
-
-          {/* Theme button*/}
+          <MobileMenuCloseButton closeMenu={closeMenu} />
           <ThemeChanger />
         </div>
-
-        {/* Menu, Search */}
-        <div className="">
-          {/* Menu */}
+        <div>
           <div className="flex flex-col gap-3">
-            {items.map((item) => (
-              <Link
-                key={item.id}
-                href={item.link}
-                className="ml-2 font-semibold text-[#495057] hover:text-blue-300 dark:text-[#adbac7]"
-              >
-                {item.label}
-              </Link>
-            ))}
-
-            {/* Search */}
-            <input
-              type="search"
-              placeholder="Search"
-              className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] dark:bg-[#3b4050]"
-            ></input>
+            <MobileMenuItems items={items} item={item} />
+            <Search />
           </div>
         </div>
       </div>
     </>
+  );
+}
+
+function Search({}) {
+  return (
+    <input
+      type="search"
+      placeholder="Search"
+      className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] dark:bg-[#3b4050]"
+    ></input>
+  );
+}
+
+function MobileMenuCloseButton({ closeMenu }) {
+  return (
+    <button
+      onClick={closeMenu}
+      className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#f4f4f5] dark:bg-[#3b4050] dark:text-white"
+    >
+      <IoClose />
+    </button>
+  );
+}
+
+function MobileMenuItems({ item, items }) {
+  return (
+    <div className="flex flex-col gap-3">
+      {items.map((item) => (
+        <Link
+          key={item.id}
+          href={item.link}
+          className="ml-2 font-semibold text-[#495057] hover:text-blue-300 dark:text-[#adbac7]"
+        >
+          {item.label}
+        </Link>
+      ))}
+    </div>
   );
 }
