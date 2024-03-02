@@ -1,4 +1,4 @@
-import { menuData } from "@/data/menuData1";
+import { menuData } from "@/data/menuData";
 import { Logo } from "../images/Logo";
 import { Menu } from "./Menu";
 import Link from "next/link";

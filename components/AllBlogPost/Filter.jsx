@@ -1,4 +1,4 @@
-import { filterData } from "@/data/filterData1";
+import { filterData } from "@/data/filterData";
 
 export function Filter({ onTagChange, selectedTag, ViewAllButtonRender }) {
   return (

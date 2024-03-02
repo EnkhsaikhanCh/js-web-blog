@@ -1,6 +1,6 @@
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { menuData } from "@/data/menuData1";
+import { menuData } from "@/data/menuData";
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeChanger } from "./ThemeChanger";
