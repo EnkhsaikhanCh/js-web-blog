@@ -3,7 +3,7 @@ import { BsCopy } from "react-icons/bs";
 import { Logo } from "./images/Logo";
 import { socialData } from "@/data/socialDate";
 import { policyMenuData } from "@/data/policyMenuData";
-import { MenuData } from "@/data/MenuData";
+import { menuData } from "@/data/menuData";
 
 const CopyButton = ({ label, refObj }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -95,7 +95,7 @@ export function Footer() {
               <AboutSection />
               <ContactInfo />
             </div>
-            <MenuLinks data={MenuData} title="Menu" />
+            <MenuLinks data={menuData} title="Menu" />
             <MenuLinks data={socialData} title="Follow Us" />
           </div>
           <div className="flex items-center justify-center pt-[20px] text-[#ADBAC7] md:justify-between">

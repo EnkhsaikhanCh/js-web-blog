@@ -1,6 +1,6 @@
 import { HiOutlineMenu } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { MenuData } from "@/data/MenuData";
+import { menuData } from "@/data/menuData";
 import { useState } from "react";
 import Link from "next/link";
 import { ThemeChanger } from "./ThemeChanger";
@@ -35,7 +35,7 @@ export function Menu({ items }) {
 
       <div className="flex gap-2 md:hidden">
         <ThemeChanger />
-        <MobileMenu items={MenuData} />
+        <MobileMenu items={menuData} />
       </div>
     </>
   );

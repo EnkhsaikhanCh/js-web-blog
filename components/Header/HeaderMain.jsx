@@ -1,4 +1,4 @@
-import { MenuData } from "@/data/MenuData";
+import { menuData } from "@/data/menuData";
 import { Logo } from "../images/Logo";
 import { Menu } from "./Menu";
 import Link from "next/link";
@@ -14,7 +14,7 @@ export function Header() {
           </Link>
 
           {/* Menu */}
-          <Menu items={MenuData} />
+          <Menu items={menuData} />
         </div>
       </div>
     </div>
