@@ -3,7 +3,7 @@ import { BsCopy } from "react-icons/bs";
 import { Logo } from "./images/Logo";
 import { socialData } from "@/data/socialDate";
 import { policyMenuData } from "@/data/policyMenuData";
-import { menuData } from "@/data/menuData";
+import { menuData } from "@/data/menuData1";
 
 const CopyButton = ({ label, refObj }) => {
   const [isCopied, setIsCopied] = useState(false);
