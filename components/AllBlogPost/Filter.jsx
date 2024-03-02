@@ -3,7 +3,7 @@ import { filterData } from "@/data/filterData";
 export function Filter({ onTagChange, selectedTag, ViewAllButtonRender }) {
   return (
     <div className="flex w-full flex-wrap items-center justify-between gap-2 font-semibold dark:text-[#ADBAC7]">
-      <div className="flex gap-2">
+      <div className="flex flex-wrap gap-2">
         {filterData.map((filter) => (
           <button
             key={filter.label}
