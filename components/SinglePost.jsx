@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { useRouter } from "next/router";
 import { Loading } from "./Loading";
-import { Footer } from "./Footer/FooterMain";
+import { Footer } from "./Footer";
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
 
 export function SinglePost() {
-  const [article, setArticle] = useState();
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -16,19 +18,32 @@ export function SinglePost() {
       fetch(
         `https://dev.to/api/articles/${router.query.username}/${router.query.slug}`,
       )
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
         .then((data) => {
           setArticle(data);
           document.querySelectorAll("pre code").forEach((el) => {
             hljs.highlightElement(el);
           });
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setError(true); // Set error state
+          setLoading(false);
         });
+    } else {
+      setLoading(false);
     }
   }, [router.query]);
 
-  console.log(router.query);
-
-  if (article === undefined) return <Loading />;
+  if (loading) return <Loading />;
+  if (error) return <div>Error loading article.</div>; // Handle error state
+  if (!article) return <div>No article found.</div>; // Handle no article found
 
   return (
     <>
@@ -48,6 +63,12 @@ export function SinglePost() {
 }
 
 function ArticleBackground_Img({ article }) {
+  // Check if article is null or if article.social_image is undefined
+  if (!article || !article.social_image) {
+    // Optionally, return a placeholder or nothing if the article or social_image is not available
+    return <div>No image available</div>;
+  }
+
   return (
     <div>
       <img
@@ -60,6 +81,12 @@ function ArticleBackground_Img({ article }) {
 }
 
 function User_Info({ article }) {
+  // Check if article or article.user is null or undefined
+  if (!article || !article.user) {
+    // Optionally, return a placeholder or nothing if the user information is not available
+    return <div>User information is not available</div>;
+  }
+
   return (
     <div className="flex items-center justify-between gap-6 rounded-md border bg-white px-5 py-2 text-[#696A75] dark:border-[#2D333B] dark:bg-[#2D333B] dark:text-[#ADBAC7]">
       <div className="flex items-center justify-center gap-4">
@@ -78,6 +105,12 @@ function User_Info({ article }) {
 }
 
 function ArticleContent({ parse, article }) {
+  // Check if article is null or undefined, or if required properties are missing
+  if (!article || !article.title || !article.body_html) {
+    // Return a placeholder or nothing if the article or required content is not available
+    return <div>Article content is not available.</div>;
+  }
+
   return (
     <div className="rounded-md border bg-white px-4 py-4 dark:border-[#2D333B] dark:bg-[#2D333B]">
       <h1 className="mb-8 text-center	text-4xl font-bold dark:text-blue-400">
