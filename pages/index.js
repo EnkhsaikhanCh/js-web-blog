@@ -2,7 +2,7 @@ import { Header } from "@/components/Header/HeaderMain";
 import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
 import { AllBlogPost } from "@/components/AllBlogPost/AllBlogPostMain";
-import { Footer } from "@/components/Footer/FooterMain";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
