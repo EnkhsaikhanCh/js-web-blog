@@ -37,7 +37,7 @@ const ArticleTags = ({ tagList }) => {
       {tagList.map((tag) => (
         <span
           key={tag}
-          className="inline-block rounded border border-blue-100 bg-blue-100 px-[10px] py-1 text-sm text-blue-600 dark:border-blue-500 dark:bg-[#4B6BFB0D] dark:text-blue-300"
+          className="inline-block rounded border border-blue-100 bg-blue-200 px-[10px] py-1 text-sm text-blue-700 dark:border-blue-500 dark:bg-[#4B6BFB0D] dark:text-blue-300"
         >
           {tag}
         </span>

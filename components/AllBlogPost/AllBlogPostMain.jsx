@@ -1,51 +1,68 @@
 import { useEffect, useState } from "react";
-import { Loading } from "../Loading";
-import { ViewAllButton } from "./ViewAllButton";
 import { CardUI } from "./CardUI";
-import { LoadNext } from "./LoadNext";
 import { Filter } from "./Filter";
 
-export function AllBlogPost({
-  hasProfile,
-  ViewAllButtonRender,
-  loadNext,
-  article,
-}) {
+export function AllBlogPost({ hasProfile, article, ViewAllButtonRender }) {
   const [articles, setArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
   const username = "simonholdorf";
-  const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=`;
   const itemsPerPage = 9;
 
   useEffect(() => {
-    fetch(`${apiUrl}${itemsPerPage}&page=1`)
-      .then((response) => response.json())
-      .then((data) => {
-        setArticles([...articles, ...data]);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [currentPage]);
+    fetchArticles(selectedTag, currentPage);
+  }, [currentPage, selectedTag]);
+
+  async function fetchArticles(tag, page) {
+    const baseUrl = `https://dev.to/api/articles?username=${username}&per_page=${itemsPerPage}`;
+    const url = tag
+      ? `${baseUrl}&tag=${tag}&page=${page}`
+      : `${baseUrl}&page=${page}`;
+
+    try {
+      setIsLoading(true);
+      const response = await fetch(url);
+      const newArticles = await response.json();
+      if (page === 1) {
+        setArticles(newArticles);
+      } else {
+        setArticles((prev) => [...prev, ...newArticles]);
+      }
+    } catch (error) {
+      console.error("Failed to fetch articles:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setIsLoading(false);
     }, 1000);
-  }, []);
+    return () => clearTimeout(timer);
+  });
 
-  const filteredArticle = async (tag) => {
-    const response = await fetch(
-      `https://dev.to/api/articles?tag=${tag}&per_page=${itemsPerPage}`,
-    );
-    const dataJson = await response.json();
-    console.log(dataJson);
-    setArticles([...dataJson]);
+  const filteredArticle = (tag) => {
     setSelectedTag(tag);
+    setCurrentPage(1);
+    setArticles([]);
   };
+
+  const handleLoadNext = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const loadMoreButton = !isLoading && articles.length > 0 && (
+    <div className="mb-[70px] flex items-center justify-center">
+      <button
+        onClick={handleLoadNext}
+        className="rounded-md border bg-white px-4 py-2 text-slate-600 hover:border-blue-300 hover:bg-slate-100 dark:border-[#242933] dark:bg-[#2D333B] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+      >
+        Load more
+      </button>
+    </div>
+  );
 
   return (
     <div className="container mx-auto mt-[30px]">
@@ -66,11 +83,7 @@ export function AllBlogPost({
         articles={articles}
       />
 
-      <LoadNext
-        articles={articles}
-        setArticles={setArticles}
-        selectedTag={selectedTag}
-      />
+      {loadMoreButton}
     </div>
   );
 }
@@ -93,8 +106,11 @@ function ArticlesRender({ hasProfile, isLoading, articles }) {
 function FilterSection({ filteredArticle, selectedTag, ViewAllButtonRender }) {
   return (
     <div className="mt-5 flex items-center justify-between px-4 font-semibold text-[#495057]">
-      <Filter onTagChange={filteredArticle} selectedTag={selectedTag} />
-      <ViewAllButton ViewAllButtonRender={ViewAllButtonRender} />
+      <Filter
+        onTagChange={filteredArticle}
+        selectedTag={selectedTag}
+        ViewAllButtonRender={ViewAllButtonRender}
+      />
     </div>
   );
 }
