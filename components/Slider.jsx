@@ -1,34 +1,23 @@
 import React from "react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { Loading } from "./Loading";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
-
-const username = "simonholdorf";
-const apiUrl = `https://dev.to/api/articles?username=${username}`;
-const itemsPerPage = 1;
+import { FetchApi } from "./api/FecthApi";
 
 export function Slider() {
-  const [articles, setArticles] = useState([]);
-  const [page, setPage] = useState(1);
+  const ITEMS_PER_PAGE = 1;
+  const { articles, isLoading, error, fetchArticles } =
+    FetchApi(ITEMS_PER_PAGE);
+  const [page, setPage] = React.useState(1);
 
-  useEffect(() => {
-    const fetchArticles = async () => {
-      try {
-        const response = await fetch(
-          `${apiUrl}&per_page=${itemsPerPage}&page=${page}`,
-        );
-        if (!response.ok) throw new Error("Network response was not ok");
-        const data = await response.json();
-        setArticles(data);
-      } catch (error) {
-        console.error("Fetching error:", error);
-      }
-    };
-    fetchArticles();
-  }, [page, apiUrl, itemsPerPage]);
+  React.useEffect(() => {
+    fetchArticles(null, page);
+  }, [page, fetchArticles]);
 
-  if (articles.length === 0) return <Loading />;
+  if (isLoading) return <Loading />;
+  if (error)
+    return <div>Failed to load the articles. Error: {error.message}</div>;
+  if (articles.length === 0) return <div>No articles found.</div>;
 
   return (
     <div className="container mx-auto flex flex-col gap-3 px-4 py-4">
@@ -38,12 +27,12 @@ export function Slider() {
 
       <div className="hidden gap-1 self-end md:flex">
         <NavigationButton
-          onClick={() => setPage(page - 1)}
+          onClick={() => setPage((currPage) => Math.max(1, currPage - 1))}
           disabled={page === 1}
           direction="back"
         />
         <NavigationButton
-          onClick={() => setPage(page + 1)}
+          onClick={() => setPage((currPage) => currPage + 1)}
           direction="forward"
         />
       </div>
@@ -51,23 +40,20 @@ export function Slider() {
   );
 }
 
-const NavigationButton = React.memo(
-  ({ onClick, direction, disabled = false }) => {
-    const icon =
-      direction === "back" ? <IoIosArrowBack /> : <IoIosArrowForward />;
-
-    return (
-      <div
-        className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
-        onClick={onClick}
-        disabled={disabled}
-        aria-label={`Go ${direction}`}
-      >
-        {icon}
-      </div>
-    );
-  },
-);
+const NavigationButton = React.memo(({ onClick, direction, disabled }) => {
+  const icon =
+    direction === "back" ? <IoIosArrowBack /> : <IoIosArrowForward />;
+  return (
+    <button
+      className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+      onClick={onClick}
+      disabled={disabled}
+      aria-label={`Go ${direction}`}
+    >
+      {icon}
+    </button>
+  );
+});
 
 const SliderCard = React.memo(
   ({ path, social_image, tag_list, title, readable_publish_date }) => {

@@ -1,28 +1,17 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Loading } from "./Loading";
+import { FetchApi } from "./api/FecthApi";
 
 export function Trending() {
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const username = "simonholdorf";
-  const apiUrl = `https://dev.to/api/articles?username=${username}&top=30`;
+  const { articles, isLoading, error, fetchArticles } = FetchApi(4);
 
   useEffect(() => {
-    fetch(`${apiUrl}&per_page=4&page=1&tag=devops`)
-      .then((response) => response.json())
-      .then((data) => {
-        setArticles(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Fetching error:", error);
-        setIsLoading(false);
-      });
-  }, []);
+    fetchArticles("devops", 1);
+  }, [fetchArticles]);
 
-  if (articles === undefined) return <Loading />;
+  if (isLoading) return <Loading />;
+  if (error) return <div>Failed to load the articles.</div>;
 
   return (
     <div className="container mx-auto my-10 px-4 py-2">
@@ -39,10 +28,8 @@ export function Trending() {
 }
 
 const TrendingCard = ({ id, path, social_image, tag_list, title }) => {
-  // const { id, path, social_image, tag_list, title } = props;
   return (
     <Link
-      key={id}
       href={path}
       className="relative flex flex-col rounded-md border hover:border-blue-300 dark:border-[#2A303C] dark:hover:border-blue-300"
     >
