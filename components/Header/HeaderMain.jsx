@@ -9,7 +9,10 @@ export function Header() {
       <div className="mx-auto px-4 py-4 md:container md:px-0">
         <div className="flex items-center justify-between px-4">
           {/* Logo */}
-          <Link href="https://pinecone-web-blog.vercel.app/">
+          <Link
+            href="https://pinecone-web-blog.vercel.app/"
+            aria-label="Go to Pinecone Web Blog homepage"
+          >
             <Logo />
           </Link>
 

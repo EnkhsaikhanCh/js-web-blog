@@ -73,13 +73,15 @@ const MenuLinks = ({ data, title }) => (
     </h2>
     <ul className="flex h-full w-[90px] flex-col gap-2 text-[#ADBAC7]">
       {data.map((item) => (
-        <a
-          key={item.id}
-          href={item.link}
-          className="hover:underline hover:underline-offset-2"
-        >
-          {item.label}
-        </a>
+        <li>
+          <a
+            key={item.id}
+            href={item.link}
+            className="hover:underline hover:underline-offset-2"
+          >
+            {item.label}
+          </a>
+        </li>
       ))}
     </ul>
   </div>

@@ -64,7 +64,7 @@ const SliderCard = React.memo(
       <Link href={path} key="" className="relative rounded-md">
         <img
           src={social_image}
-          alt={title}
+          alt={`Illustration for "${title}"`}
           className="h-auto w-full rounded-md border object-cover dark:border-gray-800"
         />
         <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black dark:lg:bg-[#2D333B] dark:lg:hover:bg-[#313840]">
