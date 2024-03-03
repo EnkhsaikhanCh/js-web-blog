@@ -10,7 +10,11 @@ export default function Home() {
       <Header />
       <Slider />
       <Trending />
-      <AllBlogPost hasProfile={false} ViewAllButtonRender={true} />
+      <AllBlogPost
+        hasProfile={false}
+        ViewAllButtonRender={true}
+        itemsPerPage={9}
+      />
       <Footer />
     </div>
   );

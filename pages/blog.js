@@ -6,7 +6,11 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <AllBlogPost hasProfile={true} ViewAllButtonRender={false} />
+      <AllBlogPost
+        hasProfile={true}
+        ViewAllButtonRender={false}
+        itemsPerPage={12}
+      />
       <Footer />
     </div>
   );

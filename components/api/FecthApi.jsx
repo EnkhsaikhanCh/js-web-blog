@@ -2,7 +2,6 @@ import { useState, useCallback } from "react";
 
 const API_URL = "https://dev.to/api/articles";
 const USERNAME = "simonholdorf";
-// const ITEMS_PER_PAGE = 9;
 
 export function FetchApi(itemsPerPage = 9) {
   const [articles, setArticles] = useState([]);

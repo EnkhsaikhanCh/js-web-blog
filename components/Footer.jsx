@@ -44,7 +44,7 @@ const CopyButton = ({ label, refObj }) => {
 };
 
 const AboutSection = () => (
-  <div className="flex flex-col gap-1">
+  <div className="hidden flex-col gap-1 md:flex">
     <h2 className="text-lg font-bold text-blue-400">About</h2>
     <p className="text-justify text-[#ADBAC7]">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos illo quae
@@ -59,7 +59,7 @@ const ContactInfo = () => {
   const phoneRef = useRef(null);
 
   return (
-    <div className="flex w-full flex-col gap-1 rounded-md text-[#ADBAC7]">
+    <div className="hidden w-full flex-col gap-1 rounded-md text-[#ADBAC7] md:flex">
       <CopyButton label="Email" refObj={emailRef} />
       <CopyButton label="Phone" refObj={phoneRef} />
     </div>
@@ -90,20 +90,24 @@ export function Footer() {
     <div className="mb-4">
       <div className="container mx-auto flex flex-col gap-[50px]">
         <div className="mx-4 flex flex-col gap-[50px] divide-y divide-[#ADBAC7] rounded-xl bg-[#2D333B] px-8 pb-[20px] pt-[30px] dark:bg-[#2D333B]">
-          <div className="grid grid-cols-2 gap-5 md:grid-cols-3">
+          <div className="flex justify-center md:grid md:grid-cols-2 md:gap-40">
             <div className="flex flex-col gap-5">
               <AboutSection />
               <ContactInfo />
             </div>
-            <MenuLinks data={menuData} title="Menu" />
-            <MenuLinks data={socialData} title="Follow Us" />
+            <div className="flex justify-center gap-[30%]">
+              <MenuLinks data={menuData} title="Menu" />
+              <MenuLinks data={socialData} title="Follow Us" />
+            </div>
           </div>
           <div className="flex items-center justify-center pt-[20px] text-[#ADBAC7] md:justify-between">
-            <Logo />
+            <div className="hidden lg:flex">
+              <Logo />
+            </div>
             <p className="text-xs sm:text-sm md:text-base">
               Copyright © 2024 MetaBlog Inc. All rights reserved.
             </p>
-            <div className="flex gap-5">
+            <div className="hidden gap-5 md:flex">
               {policyMenuData.map((policy) => (
                 <a
                   key={policy.id}

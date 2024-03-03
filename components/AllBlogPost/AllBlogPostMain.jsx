@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, memo } from "react";
+import { useCallback, useEffect, useState, memo, useRef } from "react";
 import { FetchApi } from "../api/FecthApi";
 import { CardUI } from "./CardUI";
 import { Filter } from "./Filter";
@@ -28,10 +28,16 @@ const FilterSection = memo(
   ),
 );
 
-export function AllBlogPost({ hasProfile, article, ViewAllButtonRender }) {
-  const { articles, isLoading, fetchArticles } = FetchApi();
+export function AllBlogPost({
+  hasProfile,
+  article,
+  ViewAllButtonRender,
+  itemsPerPage = 9,
+}) {
+  const { articles, isLoading, fetchArticles } = FetchApi(itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState(null);
+  const titleRef = useRef(null);
 
   useEffect(() => {
     fetchArticles(selectedTag, currentPage);
@@ -40,11 +46,13 @@ export function AllBlogPost({ hasProfile, article, ViewAllButtonRender }) {
   const filteredArticle = useCallback((tag) => {
     setSelectedTag(tag);
     setCurrentPage(1);
-    setArticles([]);
   }, []);
 
   const handleLoadNext = useCallback(() => {
     setCurrentPage((prevPage) => prevPage + 1);
+    if (titleRef.current) {
+      titleRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
 
   const loadMoreButton = !isLoading && articles.length > 0 && (
@@ -60,7 +68,10 @@ export function AllBlogPost({ hasProfile, article, ViewAllButtonRender }) {
 
   return (
     <div className="container mx-auto mt-[30px]">
-      <h1 className="px-4 text-3xl font-bold text-[#495057] dark:text-[#ADBAC7]">
+      <h1
+        ref={titleRef}
+        className="px-4 text-3xl font-bold text-[#495057] dark:text-[#ADBAC7]"
+      >
         All Blog Post
       </h1>
 
