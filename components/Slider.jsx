@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Loading } from "./Loading";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { FetchApi } from "./api/FecthApi";
 
+function useSlider(fetchArticles) {
+  const [page, setPage] = useState(1);
+  useEffect(() => {
+    fetchArticles(null, page);
+  }, [page, fetchArticles]);
+  return { setPage, page };
+}
+
 export function Slider() {
   const ITEMS_PER_PAGE = 1;
   const { articles, isLoading, error, fetchArticles } =
     FetchApi(ITEMS_PER_PAGE);
-  const [page, setPage] = React.useState(1);
-
-  React.useEffect(() => {
-    fetchArticles(null, page);
-  }, [page, fetchArticles]);
+  const { setPage, page } = useSlider(fetchArticles, ITEMS_PER_PAGE);
 
   if (isLoading) return <Loading />;
   if (error)
@@ -24,8 +28,7 @@ export function Slider() {
       {articles.map((article) => (
         <SliderCard key={article.id} {...article} />
       ))}
-
-      <div className="hidden gap-1 self-end md:flex">
+      <div className="hidden justify-end gap-1 md:flex">
         <NavigationButton
           onClick={() => setPage((currPage) => Math.max(1, currPage - 1))}
           disabled={page === 1}
@@ -45,7 +48,7 @@ const NavigationButton = React.memo(({ onClick, direction, disabled }) => {
     direction === "back" ? <IoIosArrowBack /> : <IoIosArrowForward />;
   return (
     <button
-      className="flex h-[40px] w-[40px] items-center justify-center rounded-md border transition-colors hover:border-blue-300 hover:bg-gray-50 dark:border-[#242933] dark:bg-[#242933] dark:text-[#b2cdd6] dark:hover:border-blue-300"
+      className="flex h-10 w-10 items-center justify-center rounded-md border bg-white text-xl transition hover:border-blue-300 hover:bg-gray-50 dark:border-gray-800 dark:bg-[#2D333B] dark:text-[#ADBAC7] dark:hover:border-blue-300"
       onClick={onClick}
       disabled={disabled}
       aria-label={`Go ${direction}`}
@@ -61,7 +64,8 @@ const SliderCard = React.memo(
       <Link href={path} key="" className="relative rounded-md">
         <img
           src={social_image}
-          className="aspect-video h-[300px] w-full rounded-md border object-cover dark:border-[#242933] dark:hover:border-blue-300 md:h-[450px] lg:h-[600px]"
+          alt={title}
+          className="h-auto w-full rounded-md border object-cover dark:border-gray-800"
         />
         <div className="w-100% group absolute bottom-0 left-0 right-0 flex flex-col gap-[24px] rounded-md bg-gradient-to-t from-slate-700 p-[40px] px-5 py-4 text-white transition-colors lg:bottom-2 lg:left-2 lg:right-2 lg:w-[600px] lg:border lg:border-transparent lg:bg-white lg:from-inherit lg:text-black dark:lg:bg-[#2D333B] dark:lg:hover:bg-[#313840]">
           <div className="flex flex-col gap-[16px]">
@@ -69,7 +73,7 @@ const SliderCard = React.memo(
               {tag_list.map((tag, index) => (
                 <span
                   key={index}
-                  className="inline-block rounded border bg-[#4B6BFB0D] px-[10px] py-1 text-sm text-[#4B6BFB] dark:border-blue-500 dark:text-blue-300"
+                  className="hidden rounded border border-[#BFDBFB] bg-[#BFDBFB] px-2 py-1 text-sm text-[#1D4ED8] dark:border-blue-500 dark:bg-[#2F3545] dark:text-[#93C5FA] md:flex"
                 >
                   {tag}
                 </span>
