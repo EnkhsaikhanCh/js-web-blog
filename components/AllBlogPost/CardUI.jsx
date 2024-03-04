@@ -14,8 +14,10 @@ export function CardUI({ article, hasProfile, isLoading }) {
         <Image
           src={article.social_image}
           alt={article.title}
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: "cover" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="rounded-md"
         />
       </div>
 

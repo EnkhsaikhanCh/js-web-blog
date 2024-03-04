@@ -81,7 +81,7 @@ const SliderCard = React.memo(
             </div>
             <h1 className="dark:text-white md:text-4xl">{title}</h1>
           </div>
-          <p className="hidden text-[#ADBAC7] dark:text-[#ADBAC7] md:flex">
+          <p className="hidden text-[#333333] dark:text-[#ADBAC7] lg:flex">
             {readable_publish_date}
           </p>
         </div>
