@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, memo, useCallback } from "react";
 import { BsCopy } from "react-icons/bs";
 import { Logo } from "./images/Logo";
 import { socialData } from "@/data/socialDate";
@@ -8,12 +8,12 @@ import { menuData } from "@/data/menuData";
 const CopyButton = ({ label, refObj }) => {
   const [isCopied, setIsCopied] = useState(false);
 
-  const copyToClipboard = () => {
+  const copyToClipboard = useCallback(() => {
     navigator.clipboard.writeText(refObj.current.innerText).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000);
     });
-  };
+  }, [refObj]);
 
   function CopiedPopup() {
     return (
@@ -43,7 +43,7 @@ const CopyButton = ({ label, refObj }) => {
   );
 };
 
-const AboutSection = () => (
+const AboutSection = memo(() => (
   <div className="hidden flex-col gap-1 md:flex">
     <h2 className="text-lg font-bold text-blue-400">About</h2>
     <p className="text-justify text-[#ADBAC7]">
@@ -52,9 +52,9 @@ const AboutSection = () => (
       ea provident fugiat ducimus voluptate iure vitae laborum quae.
     </p>
   </div>
-);
+));
 
-const ContactInfo = () => {
+const ContactInfo = memo(() => {
   const emailRef = useRef(null);
   const phoneRef = useRef(null);
 
@@ -64,16 +64,16 @@ const ContactInfo = () => {
       <CopyButton label="Phone" refObj={phoneRef} />
     </div>
   );
-};
+});
 
-const MenuLinks = ({ data, title }) => (
+const MenuLinks = memo(({ data, title }) => (
   <div className="flex flex-col items-center gap-2">
     <h2 className="w-[90px] items-start text-lg font-bold text-blue-400">
       {title}
     </h2>
     <ul className="flex h-full w-[90px] flex-col gap-2 text-[#ADBAC7]">
       {data.map((item) => (
-        <li>
+        <li key={item.id}>
           <a
             key={item.id}
             href={item.link}
@@ -85,7 +85,7 @@ const MenuLinks = ({ data, title }) => (
       ))}
     </ul>
   </div>
-);
+));
 
 export function Footer() {
   return (

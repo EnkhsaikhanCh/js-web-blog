@@ -48,7 +48,7 @@ export function SinglePost() {
   return (
     <>
       <Header />
-      <div className="px-4 py-[30px]">
+      <div className="">
         <div className="container mx-auto flex w-full flex-col gap-4 rounded-md  pb-4 dark:text-[#ADBAC7] lg:w-[900px]">
           <ArticleBackground_Img article={article} />
           <div className="flex w-[100%] flex-col gap-4">
@@ -70,7 +70,7 @@ function ArticleBackground_Img({ article }) {
   }
 
   return (
-    <div>
+    <div className="px-4 pt-[30px]">
       <img
         src={article.social_image}
         alt={article.title}
@@ -88,18 +88,20 @@ function User_Info({ article }) {
   }
 
   return (
-    <div className="flex items-center justify-between gap-6 rounded-md border bg-white px-5 py-2 text-[#696A75] dark:border-[#2D333B] dark:bg-[#2D333B] dark:text-[#ADBAC7]">
-      <div className="flex items-center justify-center gap-4">
-        <img
-          src={article.user.profile_image}
-          alt={article.user.username}
-          className="h-[35px] w-[35px] rounded-full"
-        />
-        <p className="text-blue-500 dark:text-blue-300">
-          {article.user.username}
-        </p>
+    <div className="px-4">
+      <div className="flex items-center justify-between gap-6 rounded-md border bg-white px-5 py-2 text-[#696A75] dark:border-[#2D333B] dark:bg-[#2D333B] dark:text-[#ADBAC7]">
+        <div className="flex items-center justify-center gap-4 ">
+          <img
+            src={article.user.profile_image}
+            alt={article.user.username}
+            className="h-[35px] w-[35px] rounded-full"
+          />
+          <p className="text-blue-500 dark:text-blue-300">
+            {article.user.username}
+          </p>
+        </div>
+        <p>{article.readable_publish_date}</p>
       </div>
-      <p>{article.readable_publish_date}</p>
     </div>
   );
 }
@@ -112,12 +114,14 @@ function ArticleContent({ parse, article }) {
   }
 
   return (
-    <div className="rounded-md border bg-white px-4 py-4 dark:border-[#2D333B] dark:bg-[#2D333B]">
-      <h1 className="mb-8 text-center	text-4xl font-bold dark:text-blue-400">
-        {article.title}
-      </h1>
-      <div className="prose mx-auto w-full px-4 dark:text-[#ADBAC7]">
-        {parse(article.body_html)}
+    <div className="pb-[30px] md:px-4">
+      <div className="rounded-md border bg-white px-1 py-4 dark:border-[#2D333B] dark:bg-[#2D333B]">
+        <h1 className="mb-8 text-center	text-4xl font-bold dark:text-blue-400">
+          {article.title}
+        </h1>
+        <div className="prose mx-auto w-full px-4 dark:text-[#ADBAC7]">
+          {parse(article.body_html)}
+        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ export function CardUI({ article, hasProfile, isLoading }) {
   return (
     <Link
       href={article.path}
-      className="flex flex-col gap-4 rounded-md border bg-white p-4 hover:border-blue-300 hover:bg-[rgba(0,0,0,.02)] hover:bg-slate-50 dark:border-[#242933] dark:bg-[#2D333B] dark:hover:border-blue-500 dark:hover:bg-[#313840]"
+      className="flex flex-col gap-4 rounded-md border bg-white p-4 hover:border-blue-400  hover:bg-gray-100 dark:border-gray-600 dark:bg-[#343a40] dark:hover:border-blue-600 dark:hover:bg-[#3c444c]"
     >
       <img
         src={article.social_image}
@@ -17,14 +17,16 @@ export function CardUI({ article, hasProfile, isLoading }) {
       <div className="col-span-2 flex h-full flex-col justify-between p-2">
         <div>
           <ArticleTags tagList={article.tag_list} />
-          <h2 className="mb-5 font-bold hover:underline hover:underline-offset-2 dark:text-[#ADBAC7]">
+          <h2 className="mb-5 font-bold text-gray-900 hover:underline hover:underline-offset-2 dark:text-[#CAD2D3]">
             {article.title}
           </h2>
         </div>
         <div className="flex items-center justify-between">
           {hasProfile && <UserInfo user={article.user} />}
 
-          <p className="text-[#ADBAC7]">{article.readable_publish_date}</p>
+          <p className="text-gray-800 dark:text-gray-400">
+            {article.readable_publish_date}
+          </p>
         </div>
       </div>
     </Link>
@@ -54,7 +56,7 @@ const UserInfo = ({ user }) => {
         alt={user.username}
         className="h-[25px] w-[25px] rounded-full"
       />
-      <p className="text-[#ADBAC7]">{user.username}</p>
+      <p className="text-gray-800 dark:text-gray-400">{user.username}</p>
     </div>
   );
 };

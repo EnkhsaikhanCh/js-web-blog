@@ -34,9 +34,9 @@ export function AllBlogPost({
   ViewAllButtonRender,
   itemsPerPage = 9,
 }) {
-  const { articles, isLoading, fetchArticles } = FetchApi(itemsPerPage);
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedTag, setSelectedTag] = useState(null);
+  const { articles, isLoading, fetchArticles } = FetchApi(itemsPerPage);
   const titleRef = useRef(null);
 
   useEffect(() => {
@@ -50,8 +50,16 @@ export function AllBlogPost({
 
   const handleLoadNext = useCallback(() => {
     setCurrentPage((prevPage) => prevPage + 1);
+    // Avoid smooth scrolling on mobile devices
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent,
+      );
     if (titleRef.current) {
-      titleRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      titleRef.current.scrollIntoView({
+        behavior: isMobile ? "auto" : "smooth",
+        block: "start",
+      });
     }
   }, []);
 

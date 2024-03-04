@@ -25,13 +25,13 @@ export function FetchApi(itemsPerPage = 9) {
         if (Array.isArray(newArticles)) {
           setArticles(newArticles);
         } else {
-          setError(new Error("Fetched data is not an array"));
-          setArticles([]);
+          throw new Error("Fetched data is not an array");
+          // setArticles([]);
         }
       } catch (error) {
         console.error("Failed to fetch articles:", error);
         setError(error);
-        setArticles([]);
+        // setArticles([]);
       } finally {
         setIsLoading(false);
       }
