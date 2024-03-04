@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function CardUI({ article, hasProfile, isLoading }) {
   if (isLoading) {
@@ -9,11 +10,15 @@ export function CardUI({ article, hasProfile, isLoading }) {
       href={article.path}
       className="flex flex-col gap-4 rounded-md border bg-white p-4 hover:border-blue-400  hover:bg-gray-100 dark:border-gray-600 dark:bg-[#343a40] dark:hover:border-blue-600 dark:hover:bg-[#3c444c]"
     >
-      <img
-        src={article.social_image}
-        alt={article.title}
-        className="aspect-video rounded-md object-cover"
-      />
+      <div className="relative w-full" style={{ paddingBottom: "50%" }}>
+        <Image
+          src={article.social_image}
+          alt={article.title}
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+
       <div className="col-span-2 flex h-full flex-col justify-between p-2">
         <div>
           <ArticleTags tagList={article.tag_list} />
@@ -51,10 +56,12 @@ const ArticleTags = ({ tagList }) => {
 const UserInfo = ({ user }) => {
   return (
     <div className="flex items-center gap-2">
-      <img
+      <Image
         src={user.profile_image}
         alt={user.username}
-        className="h-[25px] w-[25px] rounded-full"
+        width={25}
+        height={25}
+        className="rounded-full"
       />
       <p className="text-gray-800 dark:text-gray-400">{user.username}</p>
     </div>
