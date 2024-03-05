@@ -12,13 +12,14 @@ export function FetchApi(itemsPerPage = 9) {
     async (tag, page) => {
       const url = new URL(API_URL);
       url.searchParams.append("username", USERNAME);
-      url.searchParams.append("per_page", itemsPerPage);
+      url.searchParams.append("per_page", itemsPerPage.toString());
       if (tag) {
         url.searchParams.append("tag", tag);
       }
-      url.searchParams.append("page", page);
+      url.searchParams.append("page", page.toString());
 
       setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(url.toString());
         const newArticles = await response.json();

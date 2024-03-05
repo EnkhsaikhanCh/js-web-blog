@@ -1,9 +1,7 @@
-// next.config.mjs
-
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["media.dev.to"],
+    domains: ["media.dev.to", "res.cloudinary.com", "dev.to"], // Add "dev.to" to the array
   },
   webpack(config, { buildId, dev, isServer, defaultLoaders, webpack }) {
     // Only enable source maps in production
