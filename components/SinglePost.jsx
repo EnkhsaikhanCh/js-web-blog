@@ -6,59 +6,51 @@ import { Loading } from "./Loading";
 import { Footer } from "./Footer";
 import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
+import { useFetchArticle } from "./api/useFetchArticle";
+import Head from "next/head";
 
 export function SinglePost() {
-  const [article, setArticle] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   const router = useRouter();
+  const { username, slug } = router.query;
+  const { article, loading, error } = useFetchArticle(username, slug);
 
   useEffect(() => {
-    if (router.query.username && router.query.slug) {
-      fetch(
-        `https://dev.to/api/articles/${router.query.username}/${router.query.slug}`,
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          setArticle(data);
-          document.querySelectorAll("pre code").forEach((el) => {
-            hljs.highlightElement(el);
-          });
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setError(true); // Set error state
-          setLoading(false);
-        });
-    } else {
-      setLoading(false);
+    if (article) {
+      document.querySelectorAll("pre code").forEach((el) => {
+        hljs.highlightElement(el);
+      });
     }
-  }, [router.query]);
-
-  if (loading) return <Loading />;
-  if (error) return <div>Error loading article.</div>; // Handle error state
-  if (!article) return <div>No article found.</div>; // Handle no article found
+  }, [article]);
 
   return (
     <>
+      <MetaTag article={article} />
       <Header />
-      <div className="">
-        <div className="container mx-auto flex w-full flex-col gap-4 rounded-md  pb-4 dark:text-[#ADBAC7] lg:w-[900px]">
-          <ArticleBackground_Img article={article} />
-          <div className="flex w-[100%] flex-col gap-4">
-            <User_Info article={article} />
-            <ArticleContent parse={parse} article={article} />
+      {article === undefined ? (
+        <Loading />
+      ) : (
+        <div>
+          <div className="container mx-auto flex w-full flex-col gap-4 rounded-md  pb-4 dark:text-[#ADBAC7] lg:w-[900px]">
+            <ArticleBackground_Img article={article} />
+            <div className="flex w-[100%] flex-col gap-4">
+              <User_Info article={article} />
+              <ArticleContent parse={parse} article={article} />
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Footer />
     </>
+  );
+}
+
+function MetaTag(article) {
+  return (
+    <Head>
+      <title>{article.title}</title>
+      <meta property="og:title" content={article.title} />
+      <meta property="og:image" content={article.social_image} />
+    </Head>
   );
 }
 
