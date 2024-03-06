@@ -67,6 +67,7 @@ export function AllBlogPost({
     <div className="mb-[70px] flex items-center justify-center">
       <button
         onClick={handleLoadNext}
+        aria-label="Load more articles"
         className="rounded-md border bg-white px-4 py-2 text-slate-600 hover:border-blue-300 hover:bg-slate-100 dark:border-[#242933] dark:bg-[#2D333B] dark:text-[#b2cdd6] dark:hover:border-blue-300"
       >
         Load more

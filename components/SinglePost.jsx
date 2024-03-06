@@ -48,7 +48,15 @@ function MetaTag(article) {
   return (
     <Head>
       <title>{article.title}</title>
+      <meta
+        name="description"
+        content={article.description || "Article description"}
+      />
       <meta property="og:title" content={article.title} />
+      <meta
+        property="og:description"
+        content={article.description || "Article description"}
+      />
       <meta property="og:image" content={article.social_image} />
     </Head>
   );
@@ -65,7 +73,7 @@ function ArticleBackground_Img({ article }) {
     <div className="px-4 pt-[30px]">
       <img
         src={article.social_image}
-        alt={article.title}
+        alt={`Image for ${article.title}`}
         className="aspect-video h-[200px] w-full rounded-md object-cover md:h-[300px] lg:h-[400px] lg:w-[900px]"
       />
     </div>
