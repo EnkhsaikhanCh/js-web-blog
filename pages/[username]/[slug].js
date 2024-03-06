@@ -20,9 +20,23 @@ export default function Home({ article = {} }) {
       <Header />
       <div className="container mx-auto">
         <Head>
-          <meta property="og:title" content={article.title} />
-          <meta property="og:image" content={article.cover_image} />
-          <meta property="og:description" content={article.description} />
+          <title>{article.title || "Fallback Title"}</title>
+          <meta
+            name="description"
+            content={article.description || "Fallback Description"}
+          />
+          <meta
+            property="og:title"
+            content={article.title || "Fallback Title"}
+          />
+          <meta
+            property="og:image"
+            content={article.cover_image || "/default-image.jpg"}
+          />
+          <meta
+            property="og:description"
+            content={article.description || "Fallback Description"}
+          />
         </Head>
         <div>
           <div className="container mx-auto flex w-full flex-col gap-4 rounded-md  pb-4 dark:text-[#ADBAC7] lg:w-[900px]">
