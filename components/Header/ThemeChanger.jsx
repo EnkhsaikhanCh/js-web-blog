@@ -30,6 +30,9 @@ export function ThemeChanger() {
       ) : (
         <IoSunny className="text-yellow-500" />
       )}
+      <span className="sr-only">
+        {theme === "light" ? "Activate dark mode" : "Activate light mode"}
+      </span>
     </button>
   );
 }

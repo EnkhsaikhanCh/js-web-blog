@@ -22,7 +22,7 @@ export function Menu({ items }) {
           <Link
             key={item.id}
             href={item.link}
-            className="flex h-[36px] items-center justify-center rounded-[4px] px-3 hover:bg-[#f4f4f5] hover:text-blue-400 dark:text-[#ADBAC7] dark:hover:bg-[#313840] dark:hover:text-blue-300"
+            className="text-md flex h-[40px] items-center justify-center rounded-md border border-transparent px-4 py-2 font-medium leading-5 text-gray-700 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-gray-200 dark:hover:bg-gray-700 dark:hover:text-blue-400"
           >
             {item.label}
           </Link>
