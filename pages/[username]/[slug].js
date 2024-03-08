@@ -5,7 +5,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/atom-one-dark.css";
 import { useEffect } from "react";
 import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header/HeaderMain";
+import Header from "@/components/Header/Header";
 
 export default function Home({ article = {} }) {
   console.log(article);

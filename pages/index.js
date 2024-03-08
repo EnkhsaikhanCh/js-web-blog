@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Header } from "@/components/Header/HeaderMain";
+import HeaderMain, { Header } from "@/components/Header/Header";
 import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
 import { AllBlogPost } from "@/components/AllBlogPost/AllBlogPostMain";
@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 export default function Home() {
   return (
     <div>
-      <Header />
+      <HeaderMain />
       <Helmet>
         <title>
           Meta Blog - Exploring DevOps, Programming, and Cloud Technologies

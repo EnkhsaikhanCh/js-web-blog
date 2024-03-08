@@ -1,6 +1,6 @@
-import { Header } from "@/components/Header/HeaderMain";
 import { Footer } from "@/components/Footer";
 import { AllBlogPost } from "@/components/AllBlogPost/AllBlogPostMain";
+import Header from "@/components/Header/Header";
 
 export default function Home() {
   return (
