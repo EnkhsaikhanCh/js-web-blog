@@ -1,20 +1,24 @@
 import React from "react";
-import { Helmet } from "react-helmet";
-import HeaderMain, { Header } from "@/components/Header/Header";
+import Head from "next/head";
 import { Slider } from "@/components/Slider";
 import { Trending } from "@/components/Trending";
 import { AllBlogPost } from "@/components/AllBlogPost/AllBlogPostMain";
 import { Footer } from "@/components/Footer";
+import Header from "@/components/Header/Header";
 
 export default function Home() {
   return (
     <div>
-      <HeaderMain />
-      <Helmet>
+      <Head>
         <title>
           Meta Blog - Exploring DevOps, Programming, and Cloud Technologies
         </title>
-      </Helmet>
+        <meta
+          property="og:description"
+          content="Explore the latest insights and stories at Pinecone Blog, your ultimate source for tips, trends, and thought leadership in MetaBlog. Dive into our expertly curated content designed for enthusiasts and professionals alike. Click to discover more!"
+        />
+      </Head>
+      <Header />
       <Slider />
       <Trending />
       <AllBlogPost
