@@ -11,22 +11,22 @@ const SearchInput = () => (
     type="search"
     aria-label="Search"
     placeholder="Search"
-    className="h-[36px] rounded-md bg-[#F4F4F5] pl-[16px] pr-[8px] dark:bg-[#3a4050]"
+    className="h-8 rounded-md bg-[#F4F4F5] px-4 dark:bg-[#3a4050]"
   />
 );
 
 const DesktopMenu = ({ items }) => (
-  <div className="hidden items-center gap-1 md:flex">
+  <div className="hidden items-center justify-center gap-3 pl-2.5 md:flex">
     {items.map((item) => (
       <Link
         key={item.id}
         href={item.link}
-        className="text-md flex h-[40px] items-center justify-center rounded-md border border-transparent px-4 py-2 font-medium leading-5 text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-gray-200 dark:hover:bg-gray-700"
+        className="text-md flex h-9 items-center justify-center rounded-md border border-transparent p-2 font-medium leading-5 text-gray-900 transition duration-150 ease-in-out hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
       >
         {item.label}
       </Link>
     ))}
-    <div className="flex gap-3 pl-[10px]">
+    <div className="flex items-center gap-3">
       <ThemeChanger />
       <SearchInput />
     </div>
@@ -47,7 +47,7 @@ const MobileMenu = ({ items, setVisible }) => {
         <div className="flex justify-between">
           <button
             onClick={handleClose}
-            className="flex h-[36px] w-[36px] items-center justify-center rounded-md bg-[#f4f4f5] dark:bg-[#3b4050] dark:text-white"
+            className="flex h-9 w-9 items-center justify-center rounded-md bg-[#f4f4f5] dark:bg-[#3b4050] dark:text-white"
             aria-label="Close menu"
           >
             <IoClose />
@@ -58,7 +58,7 @@ const MobileMenu = ({ items, setVisible }) => {
           <Link
             key={item.id}
             href={item.link}
-            className="ml-2 font-semibold text-[#495057] hover:text-blue-300 dark:text-[#adbac7]"
+            className="ml-2 font-semibold text-gray-700 hover:text-blue-300 dark:text-gray-200"
           >
             {item.label}
           </Link>
@@ -76,7 +76,7 @@ const Header = () => {
   return (
     <div className="sticky top-0 z-50 border-b-2 bg-white shadow-sm dark:border-[#383E47] dark:bg-[#2D333B]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-12 items-center justify-between">
           <div className="flex-shrink-0">
             <Link
               href="https://pinecone-web-blog.vercel.app/"
@@ -93,7 +93,7 @@ const Header = () => {
               className="sm:flex md:hidden"
               aria-label="Open menu"
             >
-              <HiOutlineMenu className="h-[32px] w-[32px] dark:text-[#ADBAC7]" />
+              <HiOutlineMenu className="h-8 w-8 dark:text-[#ADBAC7]" />
             </button>
           </div>
           {visible && <MobileMenu items={menuData} setVisible={setVisible} />}

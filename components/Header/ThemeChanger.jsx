@@ -19,7 +19,7 @@ export function ThemeChanger() {
 
   return (
     <button
-      className="flex h-[36px] w-[36px] items-center justify-center rounded-md border border-[#F4F4F5] bg-[#F4F4F5] hover:border-blue-300 dark:border-[#39404f] dark:bg-[#39404f] dark:hover:border-blue-300"
+      className="flex h-[30px] w-[30px] items-center justify-center rounded-md border border-[#F4F4F5] bg-[#F4F4F5] hover:border-blue-300 dark:border-[#39404f] dark:bg-[#39404f] dark:hover:border-blue-300"
       aria-label={
         theme === "light" ? "Switch to dark mode" : "Switch to light mode"
       }
