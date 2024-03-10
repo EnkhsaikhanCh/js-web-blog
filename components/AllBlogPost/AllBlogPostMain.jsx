@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState, memo, useRef } from "react";
 import { FetchApi } from "../api/FecthApi";
-import { CardUI } from "./CardUI";
+import { ArticleUI } from "./ArticleUI";
 import { Filter } from "./Filter";
 
 const ArticlesRender = memo(({ hasProfile, isLoading, articles }) => (
   <div className="grid grid-cols-1 gap-5 p-4 md:grid-cols-2 lg:grid-cols-3">
     {articles.map((article) => (
-      <CardUI
+      <ArticleUI
         key={article.id}
         article={article}
         hasProfile={hasProfile}
