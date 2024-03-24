@@ -18,7 +18,7 @@ export function Slider() {
     FetchApi(ITEMS_PER_PAGE);
   const { setPage, page } = useSlider(fetchArticles, ITEMS_PER_PAGE);
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <SliderLoader />;
   if (error)
     return <div>Failed to load the articles. Error: {error.message}</div>;
   if (articles.length === 0) return <div>No articles found.</div>;
@@ -38,6 +38,24 @@ export function Slider() {
           onClick={() => setPage((currPage) => currPage + 1)}
           direction="forward"
         />
+      </div>
+    </div>
+  );
+}
+
+function SliderLoader() {
+  return (
+    <div class="relative animate-pulse rounded-md">
+      <div class="h-1/2 rounded-md bg-gray-200"></div>
+      <div class="absolute bottom-0 left-0 right-0 flex w-full flex-col gap-6 rounded-md p-10 text-white lg:bottom-2 lg:left-2 lg:right-2 lg:w-3/4 lg:bg-white lg:text-black">
+        <div class="flex flex-col gap-4">
+          <div class="mb-2 flex flex-wrap gap-2">
+            <div class="h-4 w-1/4 rounded bg-gray-200"></div>
+            <div class="h-4 w-1/4 rounded bg-gray-200"></div>
+          </div>
+          <div class="h-6 w-3/4 rounded bg-gray-200"></div>
+        </div>
+        <div class="h-4 w-1/2 rounded bg-gray-200"></div>
       </div>
     </div>
   );
