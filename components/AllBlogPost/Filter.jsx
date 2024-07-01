@@ -7,7 +7,7 @@ export function Filter({ onTagChange, selectedTag, ViewAllButtonRender }) {
         {filterData.map((filter) => (
           <button
             key={filter.label}
-            aria-label={`Filter by ${filter.label}`} // Enhancing accessibility
+            aria-label={`Filter by ${filter.label}`}
             className={`rounded-md border bg-white px-4 py-1 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 dark:bg-[#2D333B] dark:hover:bg-[#3D434F] dark:hover:text-blue-400 ${
               selectedTag === filter.tag
                 ? "border-blue-500 bg-blue-50 text-blue-600 dark:bg-[#3D434F] dark:text-blue-400"

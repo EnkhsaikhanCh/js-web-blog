@@ -46,10 +46,6 @@ const ArticleTags = ({ tagList }) => (
   </div>
 );
 
-ArticleTags.propTypes = {
-  tagList: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
 const UserInfo = ({ user }) => (
   <div className="flex items-center gap-2">
     <Image
@@ -63,13 +59,6 @@ const UserInfo = ({ user }) => (
     <p className="text-gray-800 dark:text-gray-400">{user.username}</p>
   </div>
 );
-
-UserInfo.propTypes = {
-  user: PropTypes.shape({
-    profile_image: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-  }).isRequired,
-};
 
 export function ArticleUI({ article, hasProfile, isLoading }) {
   if (isLoading) {
@@ -86,19 +75,6 @@ export function ArticleUI({ article, hasProfile, isLoading }) {
   );
 }
 
-ArticleUI.propTypes = {
-  article: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-    social_image: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    tag_list: PropTypes.arrayOf(PropTypes.string).isRequired,
-    user: PropTypes.object.isRequired,
-    readable_publish_date: PropTypes.string.isRequired,
-  }).isRequired,
-  hasProfile: PropTypes.bool,
-  isLoading: PropTypes.bool,
-};
-
 const ArticleImage = ({ src, alt }) => (
   <div className="relative h-0 w-full" style={{ paddingBottom: "50%" }}>
     <Image
@@ -111,11 +87,6 @@ const ArticleImage = ({ src, alt }) => (
     />
   </div>
 );
-
-ArticleImage.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-};
 
 const ArticleContent = ({ article, hasProfile }) => (
   <div className="col-span-2 flex h-full flex-col justify-between p-2">
@@ -133,8 +104,3 @@ const ArticleContent = ({ article, hasProfile }) => (
     </div>
   </div>
 );
-
-ArticleContent.propTypes = {
-  article: PropTypes.object.isRequired,
-  hasProfile: PropTypes.bool,
-};
